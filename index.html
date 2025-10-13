@@ -1,370 +1,223 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
-import { Check, Mail, Phone, MapPin, Layout, Film, Camera, ChevronRight, Plus, ChevronRight as Arrow, Handshake } from "lucide-react";
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>MacDuke Marketing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --blue:#2563eb; /* gleiches Blau */
+      --text:#0a0a0a;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --bg:#ffffff;
+      --bg-soft:#f6f7fb;
+      --card:#ffffff;
+      --radius:18px;
+      --max:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family:Inter,system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text); background:var(--bg); line-height:1.6;
+    }
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 16px}
+    a{color:inherit; text-decoration:none}
+    .btn{display:inline-flex; align-items:center; gap:.5rem; padding:.6rem .9rem; border-radius:999px; background:var(--blue); color:#fff; font-weight:600}
+    .btn:hover{filter:brightness(0.95)}
+    .muted{color:var(--muted)}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:18px}
+    .grid{display:grid; gap:24px}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+    @media (max-width:900px){ .grid-3{grid-template-columns:1fr} .grid-6{grid-template-columns:repeat(3,1fr)} }
+    @media (max-width:520px){ .grid-6{grid-template-columns:repeat(2,1fr)} }
 
-export default function MacDukeMarketing() {
-  const [copied, setCopied] = useState(false);
-  const email = "booking@macduke.studio";
-  const phone = "+49 176 00000000";
+    /* Header / Nav */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(6px); background:rgba(255,255,255,.8); border-bottom:1px solid var(--border)}
+    nav{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .brand{display:flex; align-items:center; gap:.6rem; font-weight:600}
+    .dot{width:28px; height:28px; border-radius:12px; background:var(--blue)}
+    .menu{display:flex; gap:22px; align-items:center}
+    .menu a:hover{color:var(--blue)}
+    @media (max-width:900px){ .menu{display:none} }
 
-  const copyEmail = async () => {
-    await navigator.clipboard.writeText(email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1500);
-  };
+    /* Hero */
+    .hero{padding:64px 0 24px}
+    h1{font-size:clamp(28px,4vw,44px); line-height:1.15; margin:0 0 10px; font-weight:600}
+    p.lead{max-width:760px; color:var(--muted); margin:0}
 
-  const branchen = [
-    {
-      key: "cosmetics",
-      title: "Cosmetics & Skincare",
-      content: (
-        <div className="space-y-3">
-          <p>Marken im Bereich Skincare und Beauty stehen vor der Aufgabe, Vertrauen, Qualität und Ruhe in einer schnellen digitalen Welt zu vermitteln.</p>
-          <h4 className="font-medium text-blue-600">Pflege, die man sieht – Textur, Licht, Vertrauen.</h4>
-          <p>Reels erzählen Pflegerituale mit echtem Licht, Haut und Bewegung. Sanfte Farbwelten und ruhige Schnitte schaffen Glaubwürdigkeit und Modernität. Kein Überdesign, sondern Balance zwischen Natürlichkeit und Präzision.</p>
-          <p className="font-medium">Monatlicher Output (Beispiel):</p>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>2 Reels (Routine / Textur / Anwendung)</li>
-            <li>1 Foto-Set (8–12 Motive)</li>
-            <li>Farb- & Lichtsystem für Feed & Stories</li>
-            <li>UGC-Kooperationen mit Micro-Creators</li>
-            <li>Monatlicher Performance-Report</li>
-          </ul>
-        </div>
-      ),
-    },
-    {
-      key: "spirits",
-      title: "Spirits & Food Brands",
-      content: (
-        <div className="space-y-3">
-          <p>Premium-Produkte werden über Atmosphäre verkauft. Ein starker Look transportiert Qualität, bevor sie probiert wird.</p>
-          <h4 className="font-medium text-blue-600">Geschmack wird Bild.</h4>
-          <p>Tabletop-Sequenzen aus Glas, Reflexen und Bewegung kombiniert mit Lifestyle-Shots – kleine filmische Momente, die Authentizität und Stil verbinden.</p>
-          <p className="font-medium">Monatlicher Output (Beispiel):</p>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>3 Reels (Tabletop, Lifestyle, Launch)</li>
-            <li>On-Location-Shooting (Bar / Outdoor)</li>
-            <li>Produktfotografie mit natürlichem Licht</li>
-            <li>CGC-Creator Kooperationen</li>
-            <li>Quartalsweiser Look-Refresh</li>
-          </ul>
-        </div>
-      ),
-    },
-    {
-      key: "tech",
-      title: "Tech & AI Tools",
-      content: (
-        <div className="space-y-3">
-          <p>Technologische Marken brauchen visuelle Klarheit, um Vertrauen zu schaffen und Komplexität zugänglich zu machen.</p>
-          <h4 className="font-medium text-blue-600">Komplexes einfach zeigen.</h4>
-          <p>Feature-Clips mit Motion-Overlays, klarem Fokus und dezenter Typografie machen Funktion greifbar. Präzision ersetzt Effekthascherei.</p>
-          <p className="font-medium">Monatlicher Output (Beispiel):</p>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>2 Produkt-/Feature-Reels (15–25 Sek.)</li>
-            <li>3 LinkedIn-Clips mit Corporate Motion-Stil</li>
-            <li>Hero-Visuals für Website & Decks</li>
-            <li>Template-System für Reels / Slides</li>
-            <li>Look-Guideline zur visuellen Konsistenz</li>
-          </ul>
-        </div>
-      ),
-    },
-    {
-      key: "hospitality",
-      title: "Hotels / Boutique Hospitality",
-      content: (
-        <div className="space-y-3">
-          <p>Im Hospitality-Bereich entscheidet Atmosphäre über Conversion. Authentische Stimmung ersetzt gestellte Werbung.</p>
-          <h4 className="font-medium text-blue-600">Atmosphäre schlägt Grundriss.</h4>
-          <p>Eine Tagessequenz von der Morgensonne bis zum Abendlicht, sanfter Sound, echte Bewegung. Keine Inszenierung, sondern Erlebnis.</p>
-          <p className="font-medium">Monatlicher Output (Beispiel):</p>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>2 Reels (Roomstory & Lifestyle)</li>
-            <li>10 Foto-Motive (Details, Licht, Gäste)</li>
-            <li>Story-Vorlagen mit saisonalen CTAs</li>
-            <li>Influencer Stay / UGC Integration</li>
-            <li>Quartalsweiser Mood-Check</li>
-          </ul>
-        </div>
-      ),
-    },
-    {
-      key: "personal",
-      title: "People & Brand Identity – Personal Branding & Business Creators",
-      content: (
-        <div className="space-y-3">
-          <p>Unternehmer, Führungskräfte und Experten werden zu Marken. Authentizität und Haltung schaffen Relevanz und Vertrauen.</p>
-          <h4 className="font-medium text-blue-600">Charakter zeigen – aber professionell.</h4>
-          <p>Reels, Portraits und Story-Snippets geben Einblicke in Projekte, Haltung und Werte. Keine Selbstdarstellung, sondern visuelle Glaubwürdigkeit.</p>
-          <p className="font-medium">Monatlicher Output (Beispiel):</p>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>2–3 Storytelling-Reels (Alltag, Werte, Insights)</li>
-            <li>Portrait-/Lifestyle-Shooting (Foto + Kurzinterview)</li>
-            <li>LinkedIn-/Instagram-Vorlagen (Quote, Statement, CTA)</li>
-            <li>CGC-Kooperationen oder Creator-Testimonials</li>
-            <li>Monatlicher Look- & Performance-Report</li>
-          </ul>
-        </div>
-      ),
-    },
-  ];
+    /* Blue section */
+    .blue{background:var(--blue); color:#fff; margin:32px 0 0; padding:36px 0}
+    .blue .box{border-radius:24px; padding:28px; background:rgba(255,255,255,.06)}
+    .ticks{display:grid; gap:10px; color:#eaf0ff; font-size:14px}
+    .tick{display:flex; align-items:center; gap:.5rem}
+    .tick svg{flex:0 0 auto}
 
-  return (
-    <div className="min-h-screen bg-white text-neutral-900">
-      {/* NAV */}
-      <header className="sticky top-0 z-50 backdrop-blur bg-white/70 border-b">
-        <nav className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
-          <div className="flex items-center gap-2">
-            <div className="size-7 rounded-xl bg-blue-600"></div>
-            <span className="font-semibold tracking-tight">MacDuke Marketing</span>
-          </div>
-          <div className="hidden md:flex items-center gap-6 text-sm">
-            <a href="#services" className="hover:opacity-70">Leistungen</a>
-            <a href="#branchen" className="hover:opacity-70">Branchen</a>
-            <a href="#prozess" className="hover:opacity-70">Prozess</a>
-            <a href="#cases" className="hover:opacity-70">Cases</a>
-            <a href="#pakete" className="hover:opacity-70">Pakete</a>
-            <a href="#kontakt" className="hover:opacity-70">Kontakt</a>
-            <Button className="rounded-2xl bg-blue-600 hover:bg-blue-700 text-white" size="sm" asChild>
-              <a href="#kontakt">Anfragen</a>
-            </Button>
-          </div>
-        </nav>
-      </header>
+    /* Section headings */
+    section{padding:56px 0; border-top:1px solid var(--border)}
+    h2{font-size:clamp(22px,3vw,32px); margin:0}
 
-      {/* HERO */}
-      <section className="max-w-6xl mx-auto px-4 py-16">
-        <h1 className="text-4xl font-semibold tracking-tight leading-tight mb-4">Klare Ästhetik. Konstante Outputs.</h1>
-        <p className="text-neutral-600 max-w-2xl">Creative Direction, Social Video und Visual Identity – als monatliches System. Planbar, konsistent, ruhig im Ton.</p>
-      </section>
+    /* Services cards */
+    .service{transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease}
+    .service:hover{transform:translateY(-2px); border-color:rgba(37,99,235,.7); box-shadow:0 6px 24px rgba(37,99,235,.08)}
+    .service .title{font-weight:600; display:flex; gap:.6rem; align-items:center; margin:0 0 8px}
+    .icon{width:20px; height:20px}
 
-      {/* ABOUT (blue background) */}
-      <section id="about" className="bg-blue-600 text-white">
-        <div className="max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-8 items-start">
-          <div>
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Wer hier arbeitet</h2>
-            <p className="mt-3 opacity-90">MacDuke Marketing ist ein unabhängiges Studio zwischen Film, Design und Markenführung. Gedacht wird visuell, produziert wird agil, betreut wird langfristig – ruhig, präzise, verlässlich.</p>
-          </div>
-          <div className="text-sm grid gap-2 opacity-90">
-            <div className="flex items-center gap-2"><Check className="size-4 text-white/90"/> Retainer-first: planbarer monatlicher Output</div>
-            <div className="flex items-center gap-2"><Check className="size-4 text-white/90"/> Ein Look-System statt Zufallscontent</div>
-            <div className="flex items-center gap-2"><Check className="size-4 text-white/90"/> Produktion & Supervision aus einer Hand</div>
-          </div>
+    /* Logos */
+    .logo{aspect-ratio:3/1; border-radius:14px; background:#e9eef7; display:grid; place-items:center; color:#7b8597; font-size:12px}
+
+    /* Footer */
+    footer{border-top:1px solid var(--border); padding:28px 0; color:#6b7280; font-size:14px}
+    .foot{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap}
+    .links{display:flex; gap:18px}
+    .links a:hover{color:var(--blue)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <div class="brand">
+          <div class="dot"></div>
+          <span>MacDuke Marketing</span>
         </div>
-      </section>
-
-      {/* SERVICES */}
-      <section id="services" className="border-t bg-neutral-50/60">
-        <div className="max-w-6xl mx-auto px-4 py-16">
-          <div className="flex items-end justify-between">
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Leistungen</h2>
-            <span className="text-sm text-neutral-500">Was wir konkret machen.</span>
-          </div>
-          <p className="mt-4 text-neutral-700 max-w-3xl">Marken brauchen ein System, das gut aussieht, funktioniert und wiedererkennbar bleibt. Hier verbinden sich kreative Leitung, Content-Produktion und Markenpflege – aus einer Hand.</p>
-          <div className="grid md:grid-cols-3 gap-6 mt-8">
-            <Card className="group rounded-3xl transition hover:border-blue-600 hover:bg-blue-50/40 hover:shadow-sm hover:-translate-y-0.5">
-              <CardHeader className="pb-2">
-                <CardTitle className="flex items-center gap-2 text-base group-hover:text-blue-700"><Layout className="size-5"/> Creative Direction & Supervision</CardTitle>
-              </CardHeader>
-              <CardContent className="text-sm text-neutral-700">Entwicklung und Pflege der visuellen Identität. Festgelegt wird, wie Licht, Farbe, Typografie, Motion und Tonalität zusammenspielen – damit jedes Asset denselben Charakter trägt.</CardContent>
-            </Card>
-            <Card className="group rounded-3xl transition hover:border-blue-600 hover:bg-blue-50/40 hover:shadow-sm hover:-translate-y-0.5">
-              <CardHeader className="pb-2">
-                <CardTitle className="flex items-center gap-2 text-base group-hover:text-blue-700"><Film className="size-5"/> Social Media Video Production</CardTitle>
-              </CardHeader>
-              <CardContent className="text-sm text-neutral-700">Output-getriebene Arbeit für Reichweite und Rhythmus: Reels, Shorts, Story-Snippets, Hook-Tests. Kurzlebiger, taktischer Content – sauber produziert, konsistent veröffentlicht.</CardContent>
-            </Card>
-            <Card className="group rounded-3xl transition hover:border-blue-600 hover:bg-blue-50/40 hover:shadow-sm hover:-translate-y-0.5">
-              <CardHeader className="pb-2">
-                <CardTitle className="flex items-center gap-2 text-base group-hover:text-blue-700"><Camera className="size-5"/> High-End Visual Identity Packages</CardTitle>
-              </CardHeader>
-              <CardContent className="text-sm text-neutral-700">Systematische Markenarbeit für Wiedererkennbarkeit: Foto-Assets, Templates, Brandfilm-Stills, Motion-Guidelines und ein Look-System, das monatlich gepflegt und erweitert werden kann.</CardContent>
-            </Card>
-          </div>
+        <div class="menu">
+          <a href="#leistungen">Leistungen</a>
+          <a href="#branchen">Branchen</a>
+          <a href="#prozess">Prozess</a>
+          <a href="#cases">Cases</a>
+          <a href="#pakete">Pakete</a>
+          <a href="#kontakt">Kontakt</a>
+          <a class="btn" href="#kontakt">Anfragen</a>
         </div>
-      </section>
-
-      {/* REFERENCES (after Services) */}
-      <section id="references" className="border-t bg-neutral-50/60">
-        <div className="max-w-6xl mx-auto px-4 py-16">
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Für Marken wie …</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 mt-8">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="aspect-[3/1] rounded-xl bg-neutral-200/80 grid place-items-center text-neutral-500 text-xs">Logo {i + 1}</div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* BRANCHEN */}
-      <section id="branchen" className="border-t">
-        <div className="max-w-6xl mx-auto px-4 py-16">
-          <div className="flex items-end justify-between">
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Branchen & Spezialisierungen</h2>
-            <span className="text-sm text-neutral-500">Aufklappen für Details.</span>
-          </div>
-          <div className="mt-8">
-            <Accordion type="single" collapsible className="divide-y rounded-3xl border bg-white">
-              {branchen.map((b) => (
-                <AccordionItem key={b.key} value={b.key} className="px-4">
-                  <AccordionTrigger className="group py-4 text-left hover:no-underline flex items-center rounded-2xl px-2 transition hover:bg-blue-50 hover:text-blue-700 hover:border hover:border-blue-200 [&>svg:last-child]:hidden">
-                    <div className="flex-1 text-[15px] font-medium text-left">{b.title}</div>
-                    <div className="ml-4 flex items-center gap-2 text-neutral-400 group-hover:text-blue-600 transition">
-                      <Plus className="size-4" />
-                      <Arrow className="size-4" />
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="pb-5 text-sm text-neutral-700 border-t pt-4">{b.content}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </div>
-      </section>
-
-      {/* PROZESS */}
-      <section id="prozess" className="border-t bg-neutral-50/60">
-        <div className="max-w-6xl mx-auto px-4 py-16">
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Prozess</h2>
-          <div className="grid md:grid-cols-4 md:items-stretch gap-6 mt-8 text-sm text-neutral-700">
-            {[{
-              t: "01 · Gespräch & Verständnis",
-              c: "Am Anfang steht ein ruhiges Gespräch. Kein Formular, sondern echtes Verständnis: Wo steht die Marke, wo soll sie hin?",
-            },{
-              t: "02 · Look-System",
-              c: "Farbe, Licht, Typo, Motion und Ton werden zu einem System. So fühlt sich jedes Asset vertraut an – und trotzdem frisch.",
-            },{
-              t: "03 · Monats-Sprints",
-              c: "Produktion in klaren Takten: Konzept → Dreh/Foto → Schnitt → Release. Sauber geplant, schnell im Ergebnis.",
-            },{
-              t: "04 · Iteration",
-              c: "Was wirkt, bleibt. Was nicht überzeugt, wird ersetzt. Ohne Drama – mit Fokus auf Fortschritt.",
-            }].map((s) => (
-              <Card key={s.t} className="rounded-3xl transition hover:border-blue-600 hover:shadow-sm hover:-translate-y-0.5">
-                <CardHeader className="pb-2"><CardTitle className="text-base">{s.t}</CardTitle></CardHeader>
-                <CardContent>{s.c}</CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CASES */}
-      <section id="cases" className="border-t">
-        <div className="max-w-6xl mx-auto px-4 py-16">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Ausgewählte Cases</h2>
-            <a href="#kontakt" className="text-sm inline-flex items-center gap-1 hover:opacity-70">Mehr Referenzen auf Anfrage <ChevronRight className="size-4"/></a>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6 mt-8">
-            {[1, 2, 3].map((i) => (
-              <Card key={i} className="rounded-3xl overflow-hidden">
-                <div className="aspect-video bg-blue-50" />
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-base">Projekt {i}</CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm text-neutral-600">Kurzbeschreibung – Ziel & Ergebnis. (Platzhalter)</CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PAKETE (below Cases, no prices) */}
-      <section id="pakete" className="border-t">
-        <div className="max-w-6xl mx-auto px-4 py-16">
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Retainer-Pakete</h2>
-          <Tabs defaultValue="m" className="mt-6">
-            <TabsList className="rounded-2xl">
-              <TabsTrigger value="s">S</TabsTrigger>
-              <TabsTrigger value="m">M</TabsTrigger>
-              <TabsTrigger value="l">L</TabsTrigger>
-            </TabsList>
-            <TabsContent value="s" className="mt-6">
-              <Card className="group rounded-3xl transition hover:border-blue-600 hover:bg-blue-50/40 hover:shadow-sm hover:-translate-y-0.5">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-lg group-hover:text-blue-700">S – Einstieg</CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm text-neutral-700">
-                  Supervision light, 2 Reels oder 1 Shoot, Look-Setup & Export-Vorlagen, kurzer Monats-Report.
-                </CardContent>
-              </Card>
-            </TabsContent>
-            <TabsContent value="m" className="mt-6">
-              <Card className="group rounded-3xl ring-2 ring-blue-600 transition hover:ring-blue-700 hover:bg-blue-50/40 hover:shadow-sm hover:-translate-y-0.5">
-                <CardHeader className="pb-2">
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg group-hover:text-blue-700">M – Wachstum</CardTitle>
-                    <Badge className="bg-blue-600 text-white rounded-2xl">Empfehlung</Badge>
-                  </div>
-                </CardHeader>
-                <CardContent className="text-sm text-neutral-700">
-                  Vollständige Creative Direction, 4 Reels + 1 Fotopaket, Hook-Varianten & A/B-Testing, quartalsweises Look-Refresh.
-                </CardContent>
-              </Card>
-            </TabsContent>
-            <TabsContent value="l" className="mt-6">
-              <Card className="group rounded-3xl transition hover:border-blue-600 hover:bg-blue-50/40 hover:shadow-sm hover:-translate-y-0.5">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-lg group-hover:text-blue-700">L – Skalierung</CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm text-neutral-700">
-                  CD + Social + Identity kombiniert, 6–8 Reels + 2 Shoots, Kampagnen-Klammer & Launch-Support, lebendiges Brand-Dokument.
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
-          <p className="text-xs text-neutral-500 mt-4">Richtwerte & Inhalte werden im Kickoff präzisiert. Laufzeit 3–12 Monate.</p>
-        </div>
-      </section>
-
-      {/* CONTACT */}
-      <section id="kontakt" className="border-t bg-neutral-900 text-white">
-        <div className="max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10">
-          <div>
-            <h2 className="text-3xl font-semibold tracking-tight mb-2">Kontakt aufnehmen</h2>
-            <p className="text-neutral-300 mb-6">Für Marken, Unternehmen und Persönlichkeiten, die langfristig visuell wachsen wollen.</p>
-            <p className="text-sm flex items-center gap-2 mb-3"><Mail className="size-4"/> <a className="underline" href={`mailto:${email}`}>{email}</a></p>
-            <p className="text-sm flex items-center gap-2 mb-3"><Phone className="size-4"/> <a className="underline" href={`tel:${phone}`}>{phone}</a></p>
-            <p className="text-sm flex items-center gap-2 mb-6"><MapPin className="size-4"/> Berlin · europaweit tätig</p>
-            <Button className="rounded-2xl bg-blue-600 hover:bg-blue-700 text-white">Projekt anfragen</Button>
-          </div>
-          <Card className="bg-white text-neutral-900 rounded-3xl">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-lg flex items-center gap-2"><Handshake className="size-5"/> Kurzbriefing</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form className="space-y-3">
-                <Input placeholder="Firma / Marke"/>
-                <Input placeholder="Website / Instagram (optional)"/>
-                <Input placeholder="Branche / Bereich"/>
-                <Textarea placeholder="Projektziel oder Fokus (2–3 Sätze)"/>
-                <Button type="button" className="rounded-2xl w-full bg-blue-600 hover:bg-blue-700 text-white">Anfrage senden</Button>
-                <p className="text-xs text-neutral-500 mt-2">Hinweis: Der Button ist ein Platzhalter. Bitte per E‑Mail schicken.</p>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="border-t">
-        <div className="max-w-6xl mx-auto px-4 py-10 text-sm text-neutral-500 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div>© {new Date().getFullYear()} MacDuke Marketing</div>
-          <div className="flex items-center gap-4">
-            <a href="#impressum" className="hover:opacity-70">Impressum</a>
-            <a href="#datenschutz" className="hover:opacity-70">Datenschutz</a>
-          </div>
-        </div>
-      </footer>
+      </nav>
     </div>
-  );
-}
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <h1>Klare Ästhetik. Konstante Outputs.</h1>
+        <p class="lead">Creative Direction, Social Video und Visual Identity – als monatliches System. Planbar, konsistent, ruhig im Ton.</p>
+      </div>
+    </section>
+
+    <div class="blue">
+      <div class="wrap grid" style="grid-template-columns:1.2fr .8fr; gap:28px;">
+        <div class="box">
+          <h2 style="margin:0 0 10px">Wer hier arbeitet</h2>
+          <p style="margin:0">MacDuke Marketing ist ein unabhängiges Studio zwischen Film, Design und Markenführung. Gedacht wird visuell, produziert wird agil, betreut wird langfristig – ruhig, präzise, verlässlich.</p>
+        </div>
+        <div class="box">
+          <div class="ticks">
+            <div class="tick">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Retainer-first: planbarer monatlicher Output
+            </div>
+            <div class="tick">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Ein Look-System statt Zufallscontent
+            </div>
+            <div class="tick">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Produktion &amp; Supervision aus einer Hand
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="leistungen">
+      <div class="wrap">
+        <div style="display:flex; align-items:end; justify-content:space-between; gap:16px; flex-wrap:wrap">
+          <h2>Leistungen</h2>
+          <span class="muted" style="font-size:14px">Was wir konkret machen.</span>
+        </div>
+        <p class="muted" style="max-width:900px; margin-top:14px">
+          Marken brauchen ein System, das gut aussieht, funktioniert und wiedererkennbar bleibt. Hier verbinden sich kreative Leitung, Content-Produktion und Markenpflege – aus einer Hand.
+        </p>
+
+        <div class="grid grid-3" style="margin-top:24px">
+          <div class="card service">
+            <h3 class="title">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              Creative Direction &amp; Supervision
+            </h3>
+            <p class="muted">Entwicklung und Pflege der visuellen Identität. Festgelegt wird, wie Licht, Farbe, Typografie, Motion und Tonalität zusammenspielen – damit jedes Asset denselben Charakter trägt.</p>
+          </div>
+
+          <div class="card service">
+            <h3 class="title">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9.5 12h5"/></svg>
+              Social Media Video Production
+            </h3>
+            <p class="muted">Output-getriebene Arbeit für Reichweite und Rhythmus: Reels, Shorts, Story-Snippets, Hook-Tests. Kurzlebiger, taktischer Content – sauber produziert, konsistent veröffentlicht.</p>
+          </div>
+
+          <div class="card service">
+            <h3 class="title">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+              High-End Visual Identity Packages
+            </h3>
+            <p class="muted">Systematische Markenarbeit für Wiedererkennbarkeit: Foto-Assets, Templates, Brandfilm-Stills, Motion-Guidelines und ein Look-System, das monatlich gepflegt und erweitert werden kann.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases">
+      <div class="wrap">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap">
+          <h2>Für Marken wie …</h2>
+        </div>
+        <div class="grid grid-6" style="margin-top:24px">
+          <div class="logo">Logo 1</div>
+          <div class="logo">Logo 2</div>
+          <div class="logo">Logo 3</div>
+          <div class="logo">Logo 4</div>
+          <div class="logo">Logo 5</div>
+          <div class="logo">Logo 6</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" style="background:#0a0a0a; color:#fff">
+      <div class="wrap" style="display:grid; gap:28px; grid-template-columns:1fr 1fr">
+        <div>
+          <h2>Kontakt aufnehmen</h2>
+          <p class="muted" style="color:#cbd5e1">Für Marken, Unternehmen und Persönlichkeiten, die langfristig visuell wachsen wollen.</p>
+          <p style="margin:16px 0 8px"><strong>E-Mail:</strong> <a style="color:#fff; text-decoration:underline" href="mailto:booking@macduke.studio">booking@macduke.studio</a></p>
+          <p style="margin:0 0 24px"><strong>Telefon:</strong> <a style="color:#fff; text-decoration:underline" href="tel:+4917600000000">+49 176 00000000</a></p>
+          <a class="btn" href="mailto:booking@macduke.studio?subject=Anfrage%20MacDuke%20Marketing">Projekt anfragen</a>
+        </div>
+        <div class="card" style="background:#fff; color:#0a0a0a">
+          <h3 style="margin:0 0 8px; font-size:18px; font-weight:600">Kurzbriefing</h3>
+          <form class="grid" style="gap:10px">
+            <input placeholder="Firma / Marke" style="padding:10px 12px; border:1px solid var(--border); border-radius:12px">
+            <input placeholder="Website / Instagram (optional)" style="padding:10px 12px; border:1px solid var(--border); border-radius:12px">
+            <input placeholder="Branche / Bereich" style="padding:10px 12px; border:1px solid var(--border); border-radius:12px">
+            <textarea placeholder="Projektziel oder Fokus (2–3 Sätze)" rows="4" style="padding:10px 12px; border:1px solid var(--border); border-radius:12px; resize:vertical"></textarea>
+            <button type="button" class="btn" style="width:100%">Anfrage senden</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>© <span id="y"></span> MacDuke Marketing</div>
+      <div class="links">
+        <a href="#impressum">Impressum</a>
+        <a href="#datenschutz">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
