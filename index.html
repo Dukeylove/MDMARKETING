@@ -10,13 +10,12 @@
     :root{
       --blue:#2563eb; --text:#0a0a0a; --muted:#6b7280;
       --border:#e5e7eb; --bg:#fff; --radius:18px; --max:1200px;
-      --acc-title:18px; /* Schriftgröße der Branchen-Titel hier ändern */
+      --acc-title:20px; /* Schriftgröße der Branchen-Titel */
     }
     *{box-sizing:border-box} html,body{margin:0}
     body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
-    /* Header */
     header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(6px);background:rgba(255,255,255,.85);border-bottom:1px solid var(--border)}
     nav{display:flex;align-items:center;justify-content:space-between;height:64px}
     .brand{display:flex;align-items:center;gap:.6rem;font-weight:600}
@@ -26,18 +25,15 @@
     .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .9rem;border-radius:999px;background:var(--blue);color:#fff;font-weight:600}
     .btn:hover{filter:brightness(.95)}
     @media (max-width:900px){.menu{display:none}}
-    /* Sections */
     section{padding:56px 0;border-top:1px solid var(--border)}
     .hero{padding:64px 0 24px;border-top:0}
     h1{font-size:clamp(28px,4vw,44px);line-height:1.15;margin:0 0 10px;font-weight:600}
     p.lead{max-width:760px;color:var(--muted);margin:0}
-    /* Blue block */
     .blue{background:var(--blue);color:#fff;padding:36px 0}
     .blue .box{border-radius:24px;padding:28px;background:rgba(255,255,255,.06)}
     .ticks{display:grid;gap:10px;color:#eaf0ff;font-size:14px}
     .tick{display:flex;align-items:center;gap:.5rem}
     .icon{width:20px;height:20px}
-    /* Cards / grids */
     .grid{display:grid;gap:24px}
     .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
     .grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -47,28 +43,20 @@
     .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:18px;transition:.15s ease}
     .card:hover{transform:translateY(-2px);border-color:rgba(37,99,235,.7);box-shadow:0 6px 24px rgba(37,99,235,.08)}
     .muted{color:var(--muted)}
-    /* Tabs */
-    .tabs{display:flex;gap:8px;background:#f8fafc;border:1px solid var(--border);border-radius:16px;padding:6px;align-self:start}
-    .tab{padding:.45rem .8rem;border-radius:12px;border:1px solid transparent;font-weight:600;cursor:pointer}
-    .tab[aria-selected="true"]{background:#fff;border-color:var(--border);box-shadow:0 1px 0 rgba(0,0,0,.03)}
-    /* Accordion */
     .acc{border:1px solid var(--border);border-radius:24px;overflow:hidden;background:#fff}
     .acc-item{border-top:1px solid var(--border)}
     .acc-item:first-child{border-top:0}
     .acc-btn{width:100%;text-align:left;padding:16px;border:0;background:transparent;display:flex;align-items:center;justify-content:space-between;font-weight:600;cursor:pointer;border-radius:14px;margin:4px}
-    .acc-title{font-size:var(--acc-title)} /* << größerer Titel für Branchen */
+    .acc-title{font-size:var(--acc-title)}
     .acc-btn:hover{background:#eef2ff;color:#1d4ed8}
     .acc-panel{max-height:0;overflow:hidden;transition:max-height .25s ease,padding .25s ease;padding:0 16px}
     .acc-item.open .acc-panel{max-height:600px;padding:0 16px 16px}
-    /* Logos */
     .logo-box{aspect-ratio:3/1;border-radius:14px;border:1px solid var(--border);background:#f3f6fb;display:grid;place-items:center;padding:8px}
-    .logo-img{max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(0.1);}
-    /* Footer */
+    .logo-img{max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(0.1)}
     footer{border-top:1px solid var(--border);padding:28px 0;color:#6b7280;font-size:14px}
     .foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
     .links{display:flex;gap:18px}
     .links a:hover{color:var(--blue)}
-    /* Dark contact section */
     .dark{background:#0a0a0a;color:#fff}
     .input{padding:10px 12px;border:1px solid var(--border);border-radius:12px;width:100%}
     textarea.input{resize:vertical}
@@ -86,14 +74,13 @@
         <a href="#cases">Cases</a>
         <a href="#pakete">Pakete</a>
         <a href="#kontakt">Kontakt</a>
-        <a class="btn" href="#kontakt">Anfragen</a>
+        <a class="btn" href="https://www.instagram.com/macduke" target="_blank">Instagram</a>
       </div>
     </nav>
   </div>
 </header>
 
 <main>
-  <!-- Hero -->
   <section class="hero">
     <div class="wrap">
       <h1>Klare Ästhetik. Konstante Outputs.</h1>
@@ -101,215 +88,80 @@
     </div>
   </section>
 
-  <!-- Blue info -->
   <div class="blue">
     <div class="wrap grid" style="grid-template-columns:1.2fr .8fr;gap:28px">
       <div class="box">
-        <h2 style="margin:0 0 10px">Wer hier arbeitet</h2>
-        <p style="margin:0">MacDuke Marketing ist ein unabhängiges Studio zwischen Film, Design und Markenführung. Gedacht wird visuell, produziert wird agil, betreut wird langfristig – ruhig, präzise, verlässlich.</p>
+        <h2>Wer hier arbeitet</h2>
+        <p>MacDuke Marketing ist ein unabhängiges Studio zwischen Film, Design und Markenführung. Gedacht wird visuell, produziert wird agil, betreut wird langfristig – ruhig, präzise, verlässlich.</p>
       </div>
       <div class="box">
         <div class="ticks">
-          <div class="tick"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Retainer-first: planbarer monatlicher Output</div>
-          <div class="tick"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Ein Look-System statt Zufallscontent</div>
-          <div class="tick"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Produktion &amp; Supervision aus einer Hand</div>
+          <div class="tick">✔ Retainer-first: planbarer monatlicher Output</div>
+          <div class="tick">✔ Ein Look-System statt Zufallscontent</div>
+          <div class="tick">✔ Produktion &amp; Supervision aus einer Hand</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Leistungen -->
   <section id="leistungen">
     <div class="wrap">
-      <div style="display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap">
-        <h2>Leistungen</h2>
-        <span class="muted" style="font-size:14px">Was wir konkret machen.</span>
-      </div>
-      <p class="muted" style="max-width:900px;margin-top:14px">
-        Marken brauchen ein System, das gut aussieht, funktioniert und wiedererkennbar bleibt. Hier verbinden sich kreative Leitung, Content-Produktion und Markenpflege – aus einer Hand.
-      </p>
+      <h2>Leistungen</h2>
       <div class="grid grid-3" style="margin-top:24px">
-        <div class="card">
-          <h3 style="margin:0 0 8px;display:flex;gap:.6rem;align-items:center;font-weight:600">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            Creative Direction &amp; Supervision
-          </h3>
-          <p class="muted">Entwicklung und Pflege der visuellen Identität. Festgelegt wird, wie Licht, Farbe, Typografie, Motion und Tonalität zusammenspielen – damit jedes Asset denselben Charakter trägt.</p>
-        </div>
-        <div class="card">
-          <h3 style="margin:0 0 8px;display:flex;gap:.6rem;align-items:center;font-weight:600">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9.5 12h5"/></svg>
-            Social Media Video Production
-          </h3>
-          <p class="muted">Output-getriebene Arbeit für Reichweite und Rhythmus: Reels, Shorts, Story-Snippets, Hook-Tests. Kurzlebiger, taktischer Content – sauber produziert, konsistent veröffentlicht.</p>
-        </div>
-        <div class="card">
-          <h3 style="margin:0 0 8px;display:flex;gap:.6rem;align-items:center;font-weight:600">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-            High-End Visual Identity Packages
-          </h3>
-          <p class="muted">Systematische Markenarbeit: Foto-Assets, Templates, Brandfilm-Stills, Motion-Guidelines &amp; ein Look-System, das monatlich gepflegt wird.</p>
-        </div>
+        <div class="card"><h3>Creative Direction &amp; Supervision</h3><p class="muted">Entwicklung und Pflege der visuellen Identität...</p></div>
+        <div class="card"><h3>Social Media Video Production</h3><p class="muted">Output-getriebene Arbeit für Reichweite...</p></div>
+        <div class="card"><h3>High-End Visual Identity Packages</h3><p class="muted">Systematische Markenarbeit für Wiedererkennbarkeit...</p></div>
       </div>
     </div>
   </section>
 
-  <!-- Referenzen (Logos) -->
   <section id="cases">
     <div class="wrap">
       <h2>Für Marken wie …</h2>
-      <p class="muted" style="margin:8px 0 0">Lade deine Logos in den Ordner <code>/logos</code> deines Repos hoch. Benenne sie z. B.: <code>logo1.png</code>, <code>logo2.svg</code>, … (Kleinbuchstaben, keine Leerzeichen). Sie erscheinen hier automatisch, wenn du die Dateinamen unten austauschst.</p>
       <div class="grid grid-6" style="margin-top:16px">
-        <!-- ↓ Dateinamen hier anpassen -->
-        <div class="logo-box"><img class="logo-img" src="logos/logo1.png" alt="Logo 1"></div>
-        <div class="logo-box"><img class="logo-img" src="logos/logo2.png" alt="Logo 2"></div>
-        <div class="logo-box"><img class="logo-img" src="logos/logo3.svg" alt="Logo 3"></div>
-        <div class="logo-box"><img class="logo-img" src="logos/logo4.png" alt="Logo 4"></div>
-        <div class="logo-box"><img class="logo-img" src="logos/logo5.svg" alt="Logo 5"></div>
-        <div class="logo-box"><img class="logo-img" src="logos/logo6.png" alt="Logo 6"></div>
+        <div class="logo-box"><img class="logo-img" src="logo1.png" alt="Logo 1"></div>
+        <div class="logo-box"><img class="logo-img" src="logo2.png" alt="Logo 2"></div>
+        <div class="logo-box"><img class="logo-img" src="logo3.png" alt="Logo 3"></div>
       </div>
-      <!--
-        Anleitung Logos:
-        1) In deinem GitHub-Repo einen Ordner "logos" anlegen.
-        2) Logos (PNG oder SVG) dort hochladen. Transparenter Hintergrund sieht am besten aus.
-        3) Oben bei src="logos/DATEI" die Namen anpassen.
-        4) Commit → GitHub Pages neu laden.
-      -->
     </div>
   </section>
 
-  <!-- Branchen (Accordion) -->
   <section id="branchen">
     <div class="wrap">
-      <div style="display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap">
-        <h2>Branchen &amp; Spezialisierungen</h2>
-        <span class="muted" style="font-size:14px">Aufklappen für Details.</span>
-      </div>
+      <h2>Branchen &amp; Spezialisierungen</h2>
       <div class="acc" style="margin-top:20px">
-        <!-- Cosmetics -->
-        <div class="acc-item">
-          <button class="acc-btn"><span class="acc-title">Cosmetics &amp; Skincare</span><span>＋</span></button>
-          <div class="acc-panel">
-            <div class="muted" style="padding-top:8px">
-              <p>Marken im Bereich Skincare und Beauty …</p>
-              <p><strong style="color:#1d4ed8">Pflege, die man sieht – Textur, Licht, Vertrauen.</strong></p>
-              <ul>
-                <li>2 Reels (Routine / Textur / Anwendung)</li>
-                <li>1 Foto-Set (8–12 Motive)</li>
-                <li>Farb- &amp; Lichtsystem für Feed &amp; Stories</li>
-                <li>UGC-Kooperationen mit Micro-Creators</li>
-                <li>Monatlicher Performance-Report</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- Spirits -->
-        <div class="acc-item">
-          <button class="acc-btn"><span class="acc-title">Spirits &amp; Food Brands</span><span>＋</span></button>
-          <div class="acc-panel"><div class="muted" style="padding-top:8px">
-            <p>Premium-Produkte werden über Atmosphäre verkauft.</p>
-            <p><strong style="color:#1d4ed8">Geschmack wird Bild.</strong></p>
-            <ul>
-              <li>3 Reels (Tabletop, Lifestyle, Launch)</li>
-              <li>On-Location-Shooting (Bar / Outdoor)</li>
-              <li>Produktfotografie mit natürlichem Licht</li>
-              <li>CGC-Creator Kooperationen</li>
-              <li>Quartalsweiser Look-Refresh</li>
-            </ul>
-          </div></div>
-        </div>
-        <!-- Tech -->
-        <div class="acc-item">
-          <button class="acc-btn"><span class="acc-title">Tech &amp; AI Tools</span><span>＋</span></button>
-          <div class="acc-panel"><div class="muted" style="padding-top:8px">
-            <p>Technologische Marken brauchen visuelle Klarheit.</p>
-            <p><strong style="color:#1d4ed8">Komplexes einfach zeigen.</strong></p>
-            <ul>
-              <li>2 Feature-Reels (15–25 Sek.)</li>
-              <li>3 LinkedIn-Clips</li>
-              <li>Hero-Visuals für Website &amp; Decks</li>
-              <li>Templates für Reels / Slides</li>
-              <li>Look-Guideline</li>
-            </ul>
-          </div></div>
-        </div>
-        <!-- Hospitality -->
-        <div class="acc-item">
-          <button class="acc-btn"><span class="acc-title">Hotels / Boutique Hospitality</span><span>＋</span></button>
-          <div class="acc-panel"><div class="muted" style="padding-top:8px">
-            <p>Atmosphäre schlägt Grundriss.</p>
-            <ul>
-              <li>2 Reels (Roomstory &amp; Lifestyle)</li>
-              <li>10 Foto-Motive</li>
-              <li>Story-Vorlagen mit saisonalen CTAs</li>
-              <li>Influencer Stay / UGC</li>
-              <li>Quartalsweiser Mood-Check</li>
-            </ul>
-          </div></div>
-        </div>
-        <!-- Personal -->
-        <div class="acc-item">
-          <button class="acc-btn"><span class="acc-title">People &amp; Brand Identity</span><span>＋</span></button>
-          <div class="acc-panel"><div class="muted" style="padding-top:8px">
-            <p><strong style="color:#1d4ed8">Charakter zeigen – aber professionell.</strong></p>
-            <ul>
-              <li>2–3 Storytelling-Reels</li>
-              <li>Portrait-/Lifestyle-Shooting</li>
-              <li>LinkedIn/Instagram-Vorlagen</li>
-              <li>Creator-Testimonials</li>
-              <li>Monatlicher Look- &amp; Performance-Report</li>
-            </ul>
-          </div></div>
-        </div>
+        <div class="acc-item"><button class="acc-btn"><span class="acc-title">Cosmetics &amp; Skincare</span><span>＋</span></button><div class="acc-panel"><p class="muted">Marken im Bereich Skincare und Beauty …</p></div></div>
+        <div class="acc-item"><button class="acc-btn"><span class="acc-title">Spirits &amp; Food Brands</span><span>＋</span></button><div class="acc-panel"><p class="muted">Premium-Produkte werden über Atmosphäre verkauft.</p></div></div>
+        <div class="acc-item"><button class="acc-btn"><span class="acc-title">Tech &amp; AI Tools</span><span>＋</span></button><div class="acc-panel"><p class="muted">Technologische Marken brauchen visuelle Klarheit.</p></div></div>
+        <div class="acc-item"><button class="acc-btn"><span class="acc-title">Hotels / Boutique Hospitality</span><span>＋</span></button><div class="acc-panel"><p class="muted">Atmosphäre schlägt Grundriss.</p></div></div>
+        <div class="acc-item"><button class="acc-btn"><span class="acc-title">People &amp; Brand Identity</span><span>＋</span></button><div class="acc-panel"><p class="muted">Charakter zeigen – aber professionell.</p></div></div>
       </div>
     </div>
   </section>
 
-  <!-- Prozess -->
   <section id="prozess">
     <div class="wrap">
       <h2>Prozess</h2>
       <div class="grid grid-4" style="margin-top:24px">
-        <div class="card"><h3 style="margin:0 0 8px;font-size:16px">01 · Gespräch &amp; Verständnis</h3><p class="muted">Ruhiges Gespräch, echtes Verständnis.</p></div>
-        <div class="card"><h3 style="margin:0 0 8px;font-size:16px">02 · Look-System</h3><p class="muted">Farbe, Licht, Typo, Motion &amp; Ton als System.</p></div>
-        <div class="card"><h3 style="margin:0 0 8px;font-size:16px">03 · Monats-Sprints</h3><p class="muted">Konzept → Dreh/Foto → Schnitt → Release.</p></div>
-        <div class="card"><h3 style="margin:0 0 8px;font-size:16px">04 · Iteration</h3><p class="muted">Was wirkt, bleibt. Der Rest fliegt raus.</p></div>
+        <div class="card"><h3>01 · Gespräch &amp; Verständnis</h3><p class="muted">Ruhiges Gespräch, echtes Verständnis.</p></div>
+        <div class="card"><h3>02 · Look-System</h3><p class="muted">Farbe, Licht, Typo, Motion &amp; Ton als System.</p></div>
+        <div class="card"><h3>03 · Monats-Sprints</h3><p class="muted">Konzept → Dreh/Foto → Schnitt → Release.</p></div>
+        <div class="card"><h3>04 · Iteration</h3><p class="muted">Was wirkt, bleibt. Der Rest fliegt raus.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- Pakete mit Tabs -->
   <section id="pakete">
     <div class="wrap">
       <h2>Retainer-Pakete</h2>
-      <div style="margin-top:16px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
-        <div class="tabs" role="tablist">
-          <button class="tab" role="tab" aria-selected="false" data-tab="s">S</button>
-          <button class="tab" role="tab" aria-selected="true"  data-tab="m">M</button>
-          <button class="tab" role="tab" aria-selected="false" data-tab="l">L</button>
-        </div>
-        <div style="flex:1;min-width:320px">
-          <div class="card tabpanel" data-panel="s" hidden>
-            <h3 style="margin:0 0 8px;font-size:18px">S – Einstieg</h3>
-            <p class="muted">Supervision light, 2 Reels oder 1 Shoot, Look-Setup &amp; Export-Vorlagen, kurzer Monats-Report.</p>
-          </div>
-          <div class="card tabpanel" data-panel="m">
-            <h3 style="margin:0 0 8px;font-size:18px;display:flex;justify-content:space-between;align-items:center">
-              <span>M – Wachstum</span><span style="background:var(--blue);color:#fff;border-radius:999px;padding:.25rem .6rem;font-size:12px">Empfehlung</span>
-            </h3>
-            <p class="muted">Vollständige Creative Direction, 4 Reels + 1 Fotopaket, Hook-Varianten &amp; A/B-Testing, quartalsweises Look-Refresh.</p>
-          </div>
-          <div class="card tabpanel" data-panel="l" hidden>
-            <h3 style="margin:0 0 8px;font-size:18px">L – Skalierung</h3>
-            <p class="muted">CD + Social + Identity, 6–8 Reels + 2 Shoots, Kampagnen-Klammer &amp; Launch-Support, lebendiges Brand-Dokument.</p>
-          </div>
-          <p class="muted" style="font-size:12px;margin-top:8px">Richtwerte. Final nach Umfang, Laufzeit (3–12 Monate) und Produktionsaufwand.</p>
-        </div>
+      <div class="grid grid-3" style="margin-top:24px">
+        <div class="card"><h3>S – Einstieg</h3><p class="muted">Supervision light, 2 Reels oder 1 Shoot...</p></div>
+        <div class="card"><h3>M – Wachstum</h3><p class="muted">Vollständige Creative Direction, 4 Reels + 1 Fotopaket...</p></div>
+        <div class="card"><h3>L – Skalierung</h3><p class="muted">CD + Social + Identity kombiniert, 6–8 Reels + 2 Shoots...</p></div>
       </div>
     </div>
   </section>
 
-  <!-- Kontakt -->
   <section id="kontakt" class="dark">
     <div class="wrap" style="display:grid;gap:28px;grid-template-columns:1fr 1fr">
       <div>
@@ -317,17 +169,16 @@
         <p class="muted" style="color:#cbd5e1">Für Marken, Unternehmen und Persönlichkeiten, die langfristig visuell wachsen wollen.</p>
         <p><strong>E-Mail:</strong> <a style="color:#fff;text-decoration:underline" href="mailto:booking@macduke.studio">booking@macduke.studio</a></p>
         <p><strong>Telefon:</strong> <a style="color:#fff;text-decoration:underline" href="tel:+4917600000000">+49 176 00000000</a></p>
-        <a class="btn" href="mailto:booking@macduke.studio?subject=Anfrage%20MacDuke%20Marketing">Projekt anfragen</a>
+        <a class="btn" href="https://www.instagram.com/macduke" target="_blank">Instagram</a>
       </div>
       <div class="card" style="background:#fff;color:#0a0a0a">
-        <h3 style="margin:0 0 8px;font-size:18px;font-weight:600">Kurzbriefing</h3>
+        <h3>Kurzbriefing</h3>
         <form class="grid" style="gap:10px">
           <input class="input" placeholder="Firma / Marke">
           <input class="input" placeholder="Website / Instagram (optional)">
           <input class="input" placeholder="Branche / Bereich">
           <textarea class="input" rows="4" placeholder="Projektziel oder Fokus (2–3 Sätze)"></textarea>
           <button type="button" class="btn" style="width:100%">Anfrage senden</button>
-          <p class="muted" style="font-size:12px;margin:4px 0 0">Hinweis: Der Button ist ein Platzhalter. Bitte per E-Mail schicken.</p>
         </form>
       </div>
     </div>
@@ -337,15 +188,12 @@
 <footer>
   <div class="wrap foot">
     <div>© <span id="y"></span> MacDuke Marketing</div>
-    <div class="links"><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a></div>
+    <div class="links"><a href="https://www.instagram.com/macduke" target="_blank">Instagram</a><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a></div>
   </div>
 </footer>
 
 <script>
-  // Jahr
   document.getElementById('y').textContent=new Date().getFullYear();
-  
-  // Accordion
   document.querySelectorAll('.acc-item').forEach(it=>{
     const btn=it.querySelector('.acc-btn');
     btn.addEventListener('click',()=>{
@@ -354,16 +202,6 @@
       if(!open) it.classList.add('open');
     });
   });
-
-  // Tabs
-  const tabs=document.querySelectorAll('.tab');
-  const panels=document.querySelectorAll('.tabpanel');
-  function showTab(val){
-    tabs.forEach(t=>t.setAttribute('aria-selected', t.dataset.tab===val ? 'true' : 'false'));
-    panels.forEach(p=>p.hidden = p.dataset.panel!==val);
-  }
-  tabs.forEach(t=>t.addEventListener('click',()=>showTab(t.dataset.tab)));
-  showTab('m'); // default
 </script>
 </body>
 </html>
