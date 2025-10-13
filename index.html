@@ -81,19 +81,20 @@
     .dark{background:#0a0a0a;color:#fff}
     .input{padding:10px 12px;border:1px solid var(--border);border-radius:12px;width:100%}
     textarea.input{resize:vertical}
-  </style>
+    html{scroll-behavior:smooth}
+  section{scroll-margin-top:84px}
+</style>
 </head>
-<body>
+<body id="top">
 <header>
   <div class="wrap">
     <nav>
       <div class="brand"><div class="dot"></div><span>MacDuke Marketing</span></div>
       <div class="menu">
+        <a href="#top">Home</a>
         <a href="#leistungen">Leistungen</a>
         <a href="#branchen">Branchen</a>
         <a href="#prozess">Prozess</a>
-        <a href="#cases">Cases</a>
-        <a href="#pakete">Pakete</a>
         <a href="#kontakt">Kontakt</a>
         <a class="btn" href="https://www.instagram.com/macduke" target="_blank">Instagram</a>
       </div>
@@ -154,51 +155,43 @@
       </div>
     </div>
   </section>
-<!-- Leistungen -->
-<section id="leistungen">
+
+  <!-- Leistungen -->
+  <section id="leistungen">
   <div class="wrap">
     <h2>Leistungen</h2>
 
-    <!-- Drei Boxen mit Icons -->
+    <!-- Drei Boxen mit Icons über den Überschriften -->
     <div class="grid grid-3" style="margin-top:24px">
       <div class="card" style="text-align:center;">
         <img src="icon1.png" alt="Creative Icon" style="width:100px;height:100px;object-fit:contain;margin-bottom:10px;">
         <h3>Creative Direction &amp; Supervision</h3>
-        <p class="muted">
-          Entwicklung und Pflege der visuellen Identität. Festlegung von Licht, Farbe, Typografie, Motion und Tonalität als System.
-        </p>
+        <p class="muted">Entwicklung und Pflege der visuellen Identität. Festlegung von Licht, Farbe, Typografie, Motion und Tonalität als System.</p>
       </div>
-
       <div class="card" style="text-align:center;">
         <img src="icon2.png" alt="Video Icon" style="width:100px;height:100px;object-fit:contain;margin-bottom:10px;">
         <h3>Social Media Video Production</h3>
-        <p class="muted">
-          Reels, Shorts, Story-Snippets und Hook-Tests für Reichweite und Rhythmus. Sauber produziert, konsistent veröffentlicht.
-        </p>
+        <p class="muted">Reels, Shorts, Story-Snippets und Hook-Tests für Reichweite und Rhythmus. Sauber produziert, konsistent veröffentlicht.</p>
       </div>
-
       <div class="card" style="text-align:center;">
         <img src="icon3.png" alt="Identity Icon" style="width:100px;height:100px;object-fit:contain;margin-bottom:10px;">
         <h3>High-End Visual Identity Packages</h3>
-        <p class="muted">
-          Foto-Assets, Templates, Brandfilm-Stills, Motion-Guidelines – als lebendiges Look-System.
-        </p>
+        <p class="muted">Foto-Assets, Templates, Brandfilm-Stills, Motion-Guidelines – als lebendiges Look-System.</p>
       </div>
     </div>
 
     <!-- Case Studies Slider -->
     <div style="margin-top:60px;">
       <h3 style="margin-bottom:20px;">Case Studies</h3>
-      <div class="case-container" style="position:relative;overflow:hidden;">
+      <div class="case-container" style="position:relative;overflow:visible;">
         <div class="case-track">
-          <div class="case-item"><img src="case1.png" alt="Case 1"><div class="case-overlay">Projektname 1</div></div>
-          <div class="case-item"><img src="case2.png" alt="Case 2"><div class="case-overlay">Projektname 2</div></div>
-          <div class="case-item"><img src="case3.png" alt="Case 3"><div class="case-overlay">Projektname 3</div></div>
-          <div class="case-item"><img src="case4.png" alt="Case 4"><div class="case-overlay">Projektname 4</div></div>
-          <div class="case-item"><img src="case5.png" alt="Case 5"><div class="case-overlay">Projektname 5</div></div>
-          <div class="case-item"><img src="case6.png" alt="Case 6"><div class="case-overlay">Projektname 6</div></div>
+          <div class="case-item"><img src="case1.jpg" alt="Case 1"><div class="case-overlay">Projektname 1</div></div>
+          <div class="case-item"><img src="case2.jpg" alt="Case 2"><div class="case-overlay">Projektname 2</div></div>
+          <div class="case-item"><img src="case3.jpg" alt="Case 3"><div class="case-overlay">Projektname 3</div></div>
+          <div class="case-item"><img src="case4.jpg" alt="Case 4"><div class="case-overlay">Projektname 4</div></div>
+          <div class="case-item"><img src="case5.jpg" alt="Case 5"><div class="case-overlay">Projektname 5</div></div>
+          <div class="case-item"><img src="case6.jpg" alt="Case 6"><div class="case-overlay">Projektname 6</div></div>
         </div>
-
         <!-- Pfeile -->
         <button class="case-arrow left">‹</button>
         <button class="case-arrow right">›</button>
@@ -208,86 +201,18 @@
 </section>
 
 <style>
-  /* Case Study Slider */
-  .case-container { position: relative; }
-  .case-track {
-    display: flex;
-    gap: 20px;
-    width: max-content;
-    animation: caseScroll 40s linear infinite;
-  }
-  @keyframes caseScroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-  .case-item {
-    position: relative;
-    flex: 0 0 auto;
-    width: 250px;
-    height: 500px;
-    border-radius: 20px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  .case-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .case-item:hover {
-    transform: scale(1.05);
-    z-index: 2;
-  }
-  .case-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
-    color: white;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    font-weight: 600;
-    padding: 16px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .case-item:hover .case-overlay { opacity: 1; }
-
-  .case-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    font-size: 32px;
-    padding: 10px 16px;
-    cursor: pointer;
-    border-radius: 10px;
-    z-index: 5;
-    transition: background 0.2s ease;
-  }
-  .case-arrow:hover { background: rgba(0,0,0,0.7); }
-  .case-arrow.left { left: 10px; }
-  .case-arrow.right { right: 10px; }
+  /* Case Study Slider (verbessert: Hover ohne Cropping, Loop-ready) */
+  .case-track{display:flex;gap:20px;width:max-content}
+  .case-item{position:relative;flex:0 0 auto;width:250px;height:500px;border-radius:20px;overflow:visible;cursor:pointer}
+  .case-item img{width:100%;height:100%;object-fit:cover;border-radius:20px;transition:transform .3s ease, box-shadow .3s ease}
+  .case-item:hover img{transform:scale(1.08);box-shadow:0 20px 60px rgba(0,0,0,.25)}
+  .case-overlay{position:absolute;inset:0;border-radius:20px;background:rgba(0,0,0,.35);color:#fff;display:flex;align-items:flex-end;justify-content:center;font-weight:600;padding:16px;opacity:0;transition:opacity .3s ease}
+  .case-item:hover .case-overlay{opacity:1}
+  .case-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);color:#fff;border:none;font-size:32px;padding:10px 16px;cursor:pointer;border-radius:10px;z-index:5;transition:background .2s ease}
+  .case-arrow:hover{background:rgba(0,0,0,.7)}
+  .case-arrow.left{left:10px}
+  .case-arrow.right{right:10px}
 </style>
-
-<script>
-  // Case slider Steuerung
-  const track = document.querySelector('.case-track');
-  const left = document.querySelector('.case-arrow.left');
-  const right = document.querySelector('.case-arrow.right');
-  let offset = 0;
-  const step = 300;
-
-  function updateTrack() {
-    track.style.animation = 'none';
-    track.style.transform = `translateX(${offset}px)`;
-  }
-  left.addEventListener('click', () => { offset += step; updateTrack(); });
-  right.addEventListener('click', () => { offset -= step; updateTrack(); });
-</script>
 
   <!-- Branchen (Accordion, alle unabhängig öffnend) -->
   <section id="branchen">
@@ -688,6 +613,49 @@
   }
   tabs.forEach(t=>t.addEventListener('click',()=>showTab(t.dataset.tab)));
   showTab('m');
+  // ===== Case Auto-Loop mit Duplikaten, Pause auf Hover, Pfeile =====
+  (function(){
+    const container=document.querySelector('.case-container');
+    const track=document.querySelector('.case-track');
+    if(!container||!track) return;
+    // Dupliziere Items für nahtlosen Loop
+    const items=[...track.children];
+    track.innerHTML='';
+    const all=[...items, ...items];
+    all.forEach(n=>track.appendChild(n.cloneNode(true)));
+
+    let x=0;            // aktuelle Position (px)
+    let speed=0.5;      // Auto-Geschwindigkeit (px/frame)
+    let paused=false;
+    function widthHalf(){
+      // Hälfte, weil wir doppelt befüllt haben
+      return track.scrollWidth/2;
+    }
+    function step(){
+      if(!paused){
+        x-=speed;
+        const w=widthHalf();
+        if(Math.abs(x)>=w){ x=0; }
+        track.style.transform=`translateX(${x}px)`;
+      }
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+
+    container.addEventListener('mouseenter',()=>paused=true);
+    container.addEventListener('mouseleave',()=>paused=false);
+
+    const left=document.querySelector('.case-arrow.left');
+    const right=document.querySelector('.case-arrow.right');
+    function jump(delta){
+      paused=true; // bei manueller Interaktion pausieren
+      x+=delta;
+      track.style.transform=`translateX(${x}px)`;
+      setTimeout(()=>paused=false,400);
+    }
+    left && left.addEventListener('click',()=>jump(300));
+    right && right.addEventListener('click',()=>jump(-300));
+  })();
 </script>
 </body>
 </html>
