@@ -10,6 +10,7 @@
     :root{
       --blue:#2563eb; --text:#0a0a0a; --muted:#6b7280;
       --border:#e5e7eb; --bg:#fff; --radius:18px; --max:1200px;
+      --acc-title:18px; /* Schriftgröße der Branchen-Titel hier ändern */
     }
     *{box-sizing:border-box} html,body{margin:0}
     body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
@@ -46,7 +47,6 @@
     .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:18px;transition:.15s ease}
     .card:hover{transform:translateY(-2px);border-color:rgba(37,99,235,.7);box-shadow:0 6px 24px rgba(37,99,235,.08)}
     .muted{color:var(--muted)}
-    .logo{aspect-ratio:3/1;border-radius:14px;background:#e9eef7;display:grid;place-items:center;color:#7b8597;font-size:12px}
     /* Tabs */
     .tabs{display:flex;gap:8px;background:#f8fafc;border:1px solid var(--border);border-radius:16px;padding:6px;align-self:start}
     .tab{padding:.45rem .8rem;border-radius:12px;border:1px solid transparent;font-weight:600;cursor:pointer}
@@ -55,10 +55,14 @@
     .acc{border:1px solid var(--border);border-radius:24px;overflow:hidden;background:#fff}
     .acc-item{border-top:1px solid var(--border)}
     .acc-item:first-child{border-top:0}
-    .acc-btn{width:100%;text-align:left;padding:16px;border:0;background:transparent;display:flex;align-items:center;justify-content:space-between;font-weight:600;cursor:pointer}
+    .acc-btn{width:100%;text-align:left;padding:16px;border:0;background:transparent;display:flex;align-items:center;justify-content:space-between;font-weight:600;cursor:pointer;border-radius:14px;margin:4px}
+    .acc-title{font-size:var(--acc-title)} /* << größerer Titel für Branchen */
     .acc-btn:hover{background:#eef2ff;color:#1d4ed8}
     .acc-panel{max-height:0;overflow:hidden;transition:max-height .25s ease,padding .25s ease;padding:0 16px}
     .acc-item.open .acc-panel{max-height:600px;padding:0 16px 16px}
+    /* Logos */
+    .logo-box{aspect-ratio:3/1;border-radius:14px;border:1px solid var(--border);background:#f3f6fb;display:grid;place-items:center;padding:8px}
+    .logo-img{max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(0.1);}
     /* Footer */
     footer{border-top:1px solid var(--border);padding:28px 0;color:#6b7280;font-size:14px}
     .foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
@@ -150,14 +154,27 @@
     </div>
   </section>
 
-  <!-- Referenzen -->
+  <!-- Referenzen (Logos) -->
   <section id="cases">
     <div class="wrap">
       <h2>Für Marken wie …</h2>
-      <div class="grid grid-6" style="margin-top:24px">
-        <div class="logo">Logo 1</div><div class="logo">Logo 2</div><div class="logo">Logo 3</div>
-        <div class="logo">Logo 4</div><div class="logo">Logo 5</div><div class="logo">Logo 6</div>
+      <p class="muted" style="margin:8px 0 0">Lade deine Logos in den Ordner <code>/logos</code> deines Repos hoch. Benenne sie z. B.: <code>logo1.png</code>, <code>logo2.svg</code>, … (Kleinbuchstaben, keine Leerzeichen). Sie erscheinen hier automatisch, wenn du die Dateinamen unten austauschst.</p>
+      <div class="grid grid-6" style="margin-top:16px">
+        <!-- ↓ Dateinamen hier anpassen -->
+        <div class="logo-box"><img class="logo-img" src="logos/logo1.png" alt="Logo 1"></div>
+        <div class="logo-box"><img class="logo-img" src="logos/logo2.png" alt="Logo 2"></div>
+        <div class="logo-box"><img class="logo-img" src="logos/logo3.svg" alt="Logo 3"></div>
+        <div class="logo-box"><img class="logo-img" src="logos/logo4.png" alt="Logo 4"></div>
+        <div class="logo-box"><img class="logo-img" src="logos/logo5.svg" alt="Logo 5"></div>
+        <div class="logo-box"><img class="logo-img" src="logos/logo6.png" alt="Logo 6"></div>
       </div>
+      <!--
+        Anleitung Logos:
+        1) In deinem GitHub-Repo einen Ordner "logos" anlegen.
+        2) Logos (PNG oder SVG) dort hochladen. Transparenter Hintergrund sieht am besten aus.
+        3) Oben bei src="logos/DATEI" die Namen anpassen.
+        4) Commit → GitHub Pages neu laden.
+      -->
     </div>
   </section>
 
@@ -171,26 +188,24 @@
       <div class="acc" style="margin-top:20px">
         <!-- Cosmetics -->
         <div class="acc-item">
-          <button class="acc-btn"><span>Cosmetics &amp; Skincare</span><span>＋</span></button>
+          <button class="acc-btn"><span class="acc-title">Cosmetics &amp; Skincare</span><span>＋</span></button>
           <div class="acc-panel">
-            <div class="wrap" style="padding:0">
-              <div class="muted" style="padding-top:8px">
-                <p>Marken im Bereich Skincare und Beauty …</p>
-                <p><strong style="color:#1d4ed8">Pflege, die man sieht – Textur, Licht, Vertrauen.</strong></p>
-                <ul>
-                  <li>2 Reels (Routine / Textur / Anwendung)</li>
-                  <li>1 Foto-Set (8–12 Motive)</li>
-                  <li>Farb- &amp; Lichtsystem für Feed &amp; Stories</li>
-                  <li>UGC-Kooperationen mit Micro-Creators</li>
-                  <li>Monatlicher Performance-Report</li>
-                </ul>
-              </div>
+            <div class="muted" style="padding-top:8px">
+              <p>Marken im Bereich Skincare und Beauty …</p>
+              <p><strong style="color:#1d4ed8">Pflege, die man sieht – Textur, Licht, Vertrauen.</strong></p>
+              <ul>
+                <li>2 Reels (Routine / Textur / Anwendung)</li>
+                <li>1 Foto-Set (8–12 Motive)</li>
+                <li>Farb- &amp; Lichtsystem für Feed &amp; Stories</li>
+                <li>UGC-Kooperationen mit Micro-Creators</li>
+                <li>Monatlicher Performance-Report</li>
+              </ul>
             </div>
           </div>
         </div>
         <!-- Spirits -->
         <div class="acc-item">
-          <button class="acc-btn"><span>Spirits &amp; Food Brands</span><span>＋</span></button>
+          <button class="acc-btn"><span class="acc-title">Spirits &amp; Food Brands</span><span>＋</span></button>
           <div class="acc-panel"><div class="muted" style="padding-top:8px">
             <p>Premium-Produkte werden über Atmosphäre verkauft.</p>
             <p><strong style="color:#1d4ed8">Geschmack wird Bild.</strong></p>
@@ -205,7 +220,7 @@
         </div>
         <!-- Tech -->
         <div class="acc-item">
-          <button class="acc-btn"><span>Tech &amp; AI Tools</span><span>＋</span></button>
+          <button class="acc-btn"><span class="acc-title">Tech &amp; AI Tools</span><span>＋</span></button>
           <div class="acc-panel"><div class="muted" style="padding-top:8px">
             <p>Technologische Marken brauchen visuelle Klarheit.</p>
             <p><strong style="color:#1d4ed8">Komplexes einfach zeigen.</strong></p>
@@ -220,7 +235,7 @@
         </div>
         <!-- Hospitality -->
         <div class="acc-item">
-          <button class="acc-btn"><span>Hotels / Boutique Hospitality</span><span>＋</span></button>
+          <button class="acc-btn"><span class="acc-title">Hotels / Boutique Hospitality</span><span>＋</span></button>
           <div class="acc-panel"><div class="muted" style="padding-top:8px">
             <p>Atmosphäre schlägt Grundriss.</p>
             <ul>
@@ -234,7 +249,7 @@
         </div>
         <!-- Personal -->
         <div class="acc-item">
-          <button class="acc-btn"><span>People &amp; Brand Identity</span><span>＋</span></button>
+          <button class="acc-btn"><span class="acc-title">People &amp; Brand Identity</span><span>＋</span></button>
           <div class="acc-panel"><div class="muted" style="padding-top:8px">
             <p><strong style="color:#1d4ed8">Charakter zeigen – aber professionell.</strong></p>
             <ul>
@@ -329,7 +344,7 @@
 <script>
   // Jahr
   document.getElementById('y').textContent=new Date().getFullYear();
-
+  
   // Accordion
   document.querySelectorAll('.acc-item').forEach(it=>{
     const btn=it.querySelector('.acc-btn');
