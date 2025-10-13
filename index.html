@@ -58,18 +58,19 @@
     .acc-btn{width:100%;text-align:left;padding:16px;border:0;background:transparent;display:flex;align-items:center;justify-content:space-between;font-weight:700;cursor:pointer;border-radius:14px;margin:4px}
     .acc-title{font-size:var(--acc-title)}
     .acc-btn:hover{background:#eef2ff;color:#1d4ed8}
-    .acc-panel{max-height:0;overflow:hidden;transition:max-height .25s ease,padding .25s ease;padding:0 16px}
-    .acc-item.open .acc-panel{max-height:1200px;padding:0 16px 16px}
+    .acc-panel{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .25s ease;padding:0 16px}
+    .acc-item.open .acc-panel{padding:0 16px 16px}
     .acc-panel p{margin:10px 0}
     .acc-panel ul{margin:8px 0 0 18px}
+    .acc-sep{border:0;border-top:1px dashed var(--border);margin:0}
 
-    /* Logos – pur, ohne Rahmen */
+    /* Logos – pur, ohne Rahmen; größer */
     .logos-head{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap}
     .ref-note{font-size:12px;color:var(--muted)}
     .marquee{overflow:hidden;margin-top:12px}
     .marquee-track{display:flex;align-items:center;gap:42px;width:max-content;animation:marq 28s linear infinite}
     @keyframes marq{from{transform:translateX(0)} to{transform:translateX(-50%)}}
-    .logo-img{height:42px;display:block;object-fit:contain;filter:none;opacity:.95}
+    .logo-img{height:84px;display:block;object-fit:contain;filter:none;opacity:.95}
 
     /* Footer */
     footer{border-top:1px solid var(--border);padding:28px 0;color:#6b7280;font-size:14px}
@@ -114,7 +115,7 @@
     <div class="wrap grid" style="grid-template-columns:1.2fr .8fr;gap:28px">
       <div class="box">
         <h2>Wer hier arbeitet</h2>
-        <p>MacDuke Marketing ist ein unabhängiges Studio zwischen Film, Design und Markenführung. Gedacht wird visuell, produziert wird agil, betreut wird langfristig – ruhig, präzise, verlässlich.</p>
+        <p>MacDuke Marketing ist ein unabhängiges Studio zwischen Film, Design und Markenführung. Wir denken visuell, produzieren agil und betreuen langfristig – ruhig, präzise, verlässlich.</p>
       </div>
       <div class="box">
         <div class="ticks">
@@ -126,19 +127,7 @@
     </div>
   </div>
 
-  <!-- Leistungen -->
-  <section id="leistungen">
-    <div class="wrap">
-      <h2>Leistungen</h2>
-      <div class="grid grid-3" style="margin-top:24px">
-        <div class="card"><h3>Creative Direction &amp; Supervision</h3><p class="muted">Entwicklung und Pflege der visuellen Identität. Festlegung von Licht, Farbe, Typografie, Motion und Tonalität als System.</p></div>
-        <div class="card"><h3>Social Media Video Production</h3><p class="muted">Reels, Shorts, Story-Snippets und Hook-Tests für Reichweite und Rhythmus. Sauber produziert, konsistent veröffentlicht.</p></div>
-        <div class="card"><h3>High-End Visual Identity Packages</h3><p class="muted">Foto-Assets, Templates, Brandfilm-Stills, Motion-Guidelines – als lebendiges Look-System.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Marken-Logos: pur + Marquee + Referenz-Note rechts -->
+  <!-- Marken-Logos: pur + Marquee + Referenz-Note rechts (JETZT zwischen Wer hier arbeitet und Leistungen) -->
   <section id="cases">
     <div class="wrap">
       <div class="logos-head">
@@ -166,7 +155,19 @@
     </div>
   </section>
 
-  <!-- Branchen (Accordion, nur Texte aktualisiert) -->
+  <!-- Leistungen -->
+  <section id="leistungen">
+    <div class="wrap">
+      <h2>Leistungen</h2>
+      <div class="grid grid-3" style="margin-top:24px">
+        <div class="card"><h3>Creative Direction &amp; Supervision</h3><p class="muted">Entwicklung und Pflege der visuellen Identität. Festlegung von Licht, Farbe, Typografie, Motion und Tonalität als System.</p></div>
+        <div class="card"><h3>Social Media Video Production</h3><p class="muted">Reels, Shorts, Story-Snippets und Hook-Tests für Reichweite und Rhythmus. Sauber produziert, konsistent veröffentlicht.</p></div>
+        <div class="card"><h3>High-End Visual Identity Packages</h3><p class="muted">Foto-Assets, Templates, Brandfilm-Stills, Motion-Guidelines – als lebendiges Look-System.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Branchen (Accordion, alle unabhängig öffnend) -->
   <section id="branchen">
     <div class="wrap">
       <h2>Branchen &amp; Spezialisierungen</h2>
@@ -188,7 +189,7 @@
             </ul>
           </div>
         </div>
-        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <hr class="acc-sep">
         <!-- Spirits & Food Brands -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Spirits &amp; Food Brands</span><span>＋</span></button>
@@ -206,7 +207,7 @@
             </ul>
           </div>
         </div>
-        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <hr class="acc-sep">
         <!-- Tech & AI Tools -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Tech &amp; AI Tools</span><span>＋</span></button>
@@ -224,7 +225,7 @@
             </ul>
           </div>
         </div>
-        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <hr class="acc-sep">
         <!-- Hotels / Boutique Hospitality -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Hotels / Boutique Hospitality</span><span>＋</span></button>
@@ -242,7 +243,7 @@
             </ul>
           </div>
         </div>
-        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <hr class="acc-sep">
         <!-- Gastro & Lifestyle-Orte -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Gastro &amp; Lifestyle-Orte</span><span>＋</span></button>
@@ -260,7 +261,7 @@
             </ul>
           </div>
         </div>
-        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <hr class="acc-sep">
         <!-- Automotive & Mobility -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Automotive &amp; Mobility</span><span>＋</span></button>
@@ -278,7 +279,7 @@
             </ul>
           </div>
         </div>
-        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <hr class="acc-sep">
         <!-- Music & Culture Labels -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Music &amp; Culture Labels</span><span>＋</span></button>
@@ -296,7 +297,7 @@
             </ul>
           </div>
         </div>
-        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <hr class="acc-sep">
         <!-- Interior & Furniture Brands -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Interior &amp; Furniture Brands</span><span>＋</span></button>
@@ -314,7 +315,7 @@
             </ul>
           </div>
         </div>
-        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <hr class="acc-sep">
         <!-- Real Estate – Lifestyle -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Real Estate – Lifestyle</span><span>＋</span></button>
@@ -332,7 +333,7 @@
             </ul>
           </div>
         </div>
-        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <hr class="acc-sep">
         <!-- Luxury Food & Drinks -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Luxury Food &amp; Drinks</span><span>＋</span></button>
@@ -350,7 +351,7 @@
             </ul>
           </div>
         </div>
-        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <hr class="acc-sep">
         <!-- Beauty Studios / Hair -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Beauty Studios / Hair</span><span>＋</span></button>
@@ -368,7 +369,7 @@
             </ul>
           </div>
         </div>
-        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <hr class="acc-sep">
         <!-- Fashion Boutiques -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Fashion Boutiques</span><span>＋</span></button>
@@ -386,7 +387,7 @@
             </ul>
           </div>
         </div>
-        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <hr class="acc-sep">
         <!-- Cosmetics & Fashion Hybrids / Lifestyle Brands -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Cosmetics &amp; Fashion Hybrids / Lifestyle Brands</span><span>＋</span></button>
@@ -404,7 +405,7 @@
             </ul>
           </div>
         </div>
-        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <hr class="acc-sep">
         <!-- People & Brand Identity -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">People &amp; Brand Identity</span><span>＋</span></button>
@@ -426,20 +427,32 @@
     </div>
   </section>
 
-  <!-- Prozess -->
+  <!-- Prozess: 4 Teile (Design beibehalten, Text humaner) -->
   <section id="prozess">
     <div class="wrap">
       <h2>Prozess</h2>
       <div class="grid grid-4" style="margin-top:24px">
-        <div class="card"><h3>01 · Gespräch &amp; Verständnis</h3><p class="muted">Ruhiges Gespräch, echtes Verständnis.</p></div>
-        <div class="card"><h3>02 · Look-System</h3><p class="muted">Farbe, Licht, Typo, Motion &amp; Ton als System.</p></div>
-        <div class="card"><h3>03 · Monats-Sprints</h3><p class="muted">Konzept → Dreh/Foto → Schnitt → Release.</p></div>
-        <div class="card"><h3>04 · Iteration</h3><p class="muted">Was wirkt, bleibt. Der Rest fliegt raus.</p></div>
+        <div class="card">
+          <h3>01 · Gespräch &amp; Verständnis</h3>
+          <p class="muted">Wir hören zu, fragen nach und verstehen dein Ziel. Kein Formularstress – ein kurzes, klares Gespräch, damit wir dasselbe Bild haben.</p>
+        </div>
+        <div class="card">
+          <h3>02 · Look-System</h3>
+          <p class="muted">Wir bauen ein visuelles System (Farbe, Licht, Typo, Motion), das zu dir passt – damit jedes Asset vertraut wirkt und wiedererkennbar bleibt.</p>
+        </div>
+        <div class="card">
+          <h3>03 · Monats-Sprints</h3>
+          <p class="muted">Planbar, ruhig im Ablauf: Konzept → Dreh/Foto → Schnitt → Release. Du siehst Ergebnisse im Takt statt Chaos im Postfach.</p>
+        </div>
+        <div class="card">
+          <h3>04 · Iteration</h3>
+          <p class="muted">Wir messen Wirkung und schärfen nach. Was performt, bleibt; was nicht, fliegt raus. Ohne Drama – mit Fokus auf Fortschritt.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Pakete (detaillierter, Tabs) -->
+  <!-- Pakete (Tabs) -->
   <section id="pakete">
     <div class="wrap">
       <h2>Retainer-Pakete</h2>
@@ -521,16 +534,30 @@
 
 <script>
   document.getElementById('y').textContent=new Date().getFullYear();
-  // Accordion
-  document.querySelectorAll('.acc-item').forEach(it=>{
-    const btn=it.querySelector('.acc-btn');
+
+  // Accordion: alle unabhängig öffnend + auto-height; ignoriert Trenner
+  document.querySelectorAll('.acc-item').forEach(item=>{
+    const btn=item.querySelector('.acc-btn');
+    const panel=item.querySelector('.acc-panel');
+    if(!btn || !panel) return; // wichtig: überspringe Separatoren
     btn.addEventListener('click',()=>{
-      const open=it.classList.contains('open');
-      document.querySelectorAll('.acc-item').forEach(i=>i.classList.remove('open'));
-      if(!open) it.classList.add('open');
+      const isOpen=item.classList.contains('open');
+      if(isOpen){
+        item.classList.remove('open');
+        panel.style.maxHeight=null;
+      }else{
+        item.classList.add('open');
+        panel.style.maxHeight=panel.scrollHeight+'px';
+      }
+    });
+    window.addEventListener('resize',()=>{
+      if(item.classList.contains('open')){
+        panel.style.maxHeight=panel.scrollHeight+'px';
+      }
     });
   });
-  // Tabs (Pakete)
+
+  // Tabs (Pakete) – klickbar machen
   const tabs=document.querySelectorAll('.tab');
   const panels=document.querySelectorAll('.tabpanel');
   function showTab(val){
