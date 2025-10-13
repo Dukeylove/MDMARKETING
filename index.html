@@ -274,11 +274,12 @@
 </section>
 
 <style>
-  /* Case Study Slider (angepasst: kein Bild-Scale, Click = starker Textschatten) */
-  .case-track{display:flex;gap:20px;width:max-content}
+  /* Case Study Slider – final (Autoloop, Bild+Video, Hover-Zoom: schnell rein, langsam raus) */
+  .case-track{display:flex;gap:20px;width:max-content;will-change:transform}
   .case-item{position:relative;flex:0 0 auto;width:250px;height:500px;border-radius:20px;overflow:visible;cursor:pointer}
-  .case-item img, .case-item video{width:100%;height:100%;object-fit:cover;border-radius:20px;display:block}
-  /* Overlay immer sichtbar (ohne abdunkeln); nur Text mit leichtem Schatten */
+  .case-item img,.case-item video{width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;transition:transform .8s ease, box-shadow .8s ease}
+  /* Hover: schneller rein (0.15s), stärkerer Schatten; beim Verlassen langsam raus (0.8s via Basis) */
+  .case-item:hover img,.case-item:hover video{transform:scale(1.06);box-shadow:0 18px 60px rgba(0,0,0,.3);transition-duration:.15s}
   .case-overlay{position:absolute;inset:0;border-radius:20px;pointer-events:none;display:flex;align-items:flex-end;justify-content:center}
   .case-meta{width:100%;padding:14px 16px;color:#fff;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.35)}
   .case-title{font-weight:700}
@@ -308,10 +309,9 @@
 </style>
 
   <!-- Branchen (Accordion, alle unabhängig öffnend) -->
-  <section id="branchen" style="background:#000;">
-    <div class="wrap" style="color:#f5f5f5;">
-      <h2>Branchen &amp; Spezialisierungen</h2>
-      <div class="acc" style="margin-top:20px; background:#fff;"> style="margin-top:20px">
+  $1
+      <p style="color:#f5f5f5;max-width:900px;margin-top:6px">Was das bedeutet: Wir denken Content **branchen-spezifisch**. Jede Branche hat andere Codes, Tempi und Erwartungen – darauf passen wir Ton, Licht, Bewegung und Format an. Unten siehst du Beispiele, wie das inhaltlich und im monatlichen Output aussieht.</p>
+      <div class="acc" style="margin-top:20px; background:#fff;">
         <!-- Cosmetics & Skincare -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Cosmetics &amp; Skincare</span><span>＋</span></button>
@@ -738,13 +738,4 @@
     container.addEventListener('mouseenter',()=>paused=true);
     container.addEventListener('mouseleave',()=>paused=false);
 
-    const left=document.querySelector('.case-arrow.left');
-    const right=document.querySelector('.case-arrow.right');
-    function jump(delta){
-      paused=true; // bei manueller Interaktion pausieren
-      x+=delta;
-      track.style.transform=`translateX(${x}px)`;
-      setTimeout(()=>paused=false,400);
-    }
-    left && left.addEventListener('click',()=>jump(300));
-    right && right.addEventListener('click',()=>jump(-3
+    const left=document.querySelect
