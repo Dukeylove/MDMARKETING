@@ -83,6 +83,8 @@
     textarea.input{resize:vertical}
     html{scroll-behavior:smooth}
   section{scroll-margin-top:84px}
+  html{scroll-behavior:smooth}
+  section{scroll-margin-top:84px}
 </style>
 </head>
 <body id="top">
@@ -185,12 +187,83 @@
       <h3 style="margin-bottom:20px;">Case Studies</h3>
       <div class="case-container" style="position:relative;overflow:visible;">
         <div class="case-track">
-          <div class="case-item"><img src="case1.jpg" alt="Case 1"><div class="case-overlay">Projektname 1</div></div>
-          <div class="case-item"><img src="case2.jpg" alt="Case 2"><div class="case-overlay">Projektname 2</div></div>
-          <div class="case-item"><img src="case3.jpg" alt="Case 3"><div class="case-overlay">Projektname 3</div></div>
-          <div class="case-item"><img src="case4.jpg" alt="Case 4"><div class="case-overlay">Projektname 4</div></div>
-          <div class="case-item"><img src="case5.jpg" alt="Case 5"><div class="case-overlay">Projektname 5</div></div>
-          <div class="case-item"><img src="case6.jpg" alt="Case 6"><div class="case-overlay">Projektname 6</div></div>
+          <!-- 7 Cases | Bilder + Videos gemischt; Videos: autoplay, loop, muted, playsinline -->
+          <div class="case-item">
+            <img src="case1.jpg" alt="Case 1">
+            <div class="case-overlay">
+              <div class="case-meta">
+                <div class="case-title">Projektname 1 — Kampagnenvisual</div>
+                <div class="case-client">Kunde: Beispiel GmbH</div>
+                <a class="case-ig" href="https://www.instagram.com/macduke" target="_blank">instagram.com/macduke</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-item">
+            <video src="case2.mov" autoplay loop muted playsinline></video>
+            <div class="case-overlay">
+              <div class="case-meta">
+                <div class="case-title">Projektname 2 — Produkt Reel</div>
+                <div class="case-client">Kunde: Brand XY</div>
+                <a class="case-ig" href="https://www.instagram.com/macduke" target="_blank">instagram.com/macduke</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-item">
+            <img src="case3.jpg" alt="Case 3">
+            <div class="case-overlay">
+              <div class="case-meta">
+                <div class="case-title">Projektname 3 — Hospitality Mood</div>
+                <div class="case-client">Kunde: Hotel Aurora</div>
+                <a class="case-ig" href="https://www.instagram.com/macduke" target="_blank">instagram.com/macduke</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-item">
+            <img src="case4.jpg" alt="Case 4">
+            <div class="case-overlay">
+              <div class="case-meta">
+                <div class="case-title">Projektname 4 — Identity Frames</div>
+                <div class="case-client">Kunde: Studio North</div>
+                <a class="case-ig" href="https://www.instagram.com/macduke" target="_blank">instagram.com/macduke</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-item">
+            <img src="case5.jpg" alt="Case 5">
+            <div class="case-overlay">
+              <div class="case-meta">
+                <div class="case-title">Projektname 5 — Tabletop Film</div>
+                <div class="case-client">Kunde: Fine Spirits</div>
+                <a class="case-ig" href="https://www.instagram.com/macduke" target="_blank">instagram.com/macduke</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-item">
+            <img src="case6.jpg" alt="Case 6">
+            <div class="case-overlay">
+              <div class="case-meta">
+                <div class="case-title">Projektname 6 — Tech Explainer</div>
+                <div class="case-client">Kunde: Nexa Tools</div>
+                <a class="case-ig" href="https://www.instagram.com/macduke" target="_blank">instagram.com/macduke</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-item">
+            <video src="case7.mov" autoplay loop muted playsinline></video>
+            <div class="case-overlay">
+              <div class="case-meta">
+                <div class="case-title">Projektname 7 — Launch Teaser</div>
+                <div class="case-client">Kunde: Nova Brands</div>
+                <a class="case-ig" href="https://www.instagram.com/macduke" target="_blank">instagram.com/macduke</a>
+              </div>
+            </div>
+          </div>
         </div>
         <!-- Pfeile -->
         <button class="case-arrow left">‹</button>
@@ -199,6 +272,26 @@
     </div>
   </div>
 </section>
+
+<style>
+  /* Case Study Slider (angepasst: kein Bild-Scale, Click = starker Textschatten) */
+  .case-track{display:flex;gap:20px;width:max-content}
+  .case-item{position:relative;flex:0 0 auto;width:250px;height:500px;border-radius:20px;overflow:visible;cursor:pointer}
+  .case-item img, .case-item video{width:100%;height:100%;object-fit:cover;border-radius:20px;display:block}
+  /* Overlay immer sichtbar (ohne abdunkeln); nur Text mit leichtem Schatten */
+  .case-overlay{position:absolute;inset:0;border-radius:20px;pointer-events:none;display:flex;align-items:flex-end;justify-content:center}
+  .case-meta{width:100%;padding:14px 16px;color:#fff;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.35)}
+  .case-title{font-weight:700}
+  .case-client{opacity:.95}
+  .case-ig{color:#fff;text-decoration:underline;opacity:.95}
+  /* Klick = stärkerer Textschatten */
+  .case-item.focus .case-meta{ text-shadow:0 4px 22px rgba(0,0,0,.75), 0 0 1px rgba(0,0,0,.6) }
+
+  .case-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);color:#fff;border:none;font-size:32px;padding:10px 16px;cursor:pointer;border-radius:10px;z-index:5;transition:background .2s ease}
+  .case-arrow:hover{background:rgba(0,0,0,.7)}
+  .case-arrow.left{left:10px}
+  .case-arrow.right{right:10px}
+</style>
 
 <style>
   /* Case Study Slider (verbessert: Hover ohne Cropping, Loop-ready) */
@@ -215,10 +308,10 @@
 </style>
 
   <!-- Branchen (Accordion, alle unabhängig öffnend) -->
-  <section id="branchen">
-    <div class="wrap">
+  <section id="branchen" style="background:#000;">
+    <div class="wrap" style="color:#f5f5f5;">
       <h2>Branchen &amp; Spezialisierungen</h2>
-      <div class="acc" style="margin-top:20px">
+      <div class="acc" style="margin-top:20px; background:#fff;"> style="margin-top:20px">
         <!-- Cosmetics & Skincare -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Cosmetics &amp; Skincare</span><span>＋</span></button>
@@ -654,8 +747,4 @@
       setTimeout(()=>paused=false,400);
     }
     left && left.addEventListener('click',()=>jump(300));
-    right && right.addEventListener('click',()=>jump(-300));
-  })();
-</script>
-</body>
-</html>
+    right && right.addEventListener('click',()=>jump(-3
