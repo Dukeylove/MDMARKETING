@@ -10,12 +10,14 @@
     :root{
       --blue:#2563eb; --text:#0a0a0a; --muted:#6b7280;
       --border:#e5e7eb; --bg:#fff; --radius:18px; --max:1200px;
-      --acc-title:20px; /* Schriftgröße der Branchen-Titel */
+      --acc-title:20px; /* Branchen-Titelgröße */
     }
     *{box-sizing:border-box} html,body{margin:0}
     body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+
+    /* Header */
     header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(6px);background:rgba(255,255,255,.85);border-bottom:1px solid var(--border)}
     nav{display:flex;align-items:center;justify-content:space-between;height:64px}
     .brand{display:flex;align-items:center;gap:.6rem;font-weight:600}
@@ -25,38 +27,56 @@
     .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .9rem;border-radius:999px;background:var(--blue);color:#fff;font-weight:600}
     .btn:hover{filter:brightness(.95)}
     @media (max-width:900px){.menu{display:none}}
+
+    /* Sections */
     section{padding:56px 0;border-top:1px solid var(--border)}
-    .hero{padding:64px 0 24px;border-top:0}
-    h1{font-size:clamp(28px,4vw,44px);line-height:1.15;margin:0 0 10px;font-weight:600}
-    p.lead{max-width:760px;color:var(--muted);margin:0}
+
+    /* HERO full-width blue */
+    .hero{padding:72px 0 40px;border-top:0;background:var(--blue);color:#fff}
+    h1{font-size:clamp(30px,5vw,56px);line-height:1.1;margin:0 0 10px;font-weight:700}
+    .hero-sub{max-width:980px;color:#e6edff;margin:10px 0 0}
+
+    /* General */
     .blue{background:var(--blue);color:#fff;padding:36px 0}
     .blue .box{border-radius:24px;padding:28px;background:rgba(255,255,255,.06)}
-    .ticks{display:grid;gap:10px;color:#eaf0ff;font-size:14px}
+    .ticks{display:grid;gap:10px;color:#eaf0ff;font-size:15px;font-weight:600} /* dicker */
     .tick{display:flex;align-items:center;gap:.5rem}
-    .icon{width:20px;height:20px}
+
     .grid{display:grid;gap:24px}
     .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
     .grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
-    .grid-6{grid-template-columns:repeat(6,minmax(0,1fr))}
-    @media (max-width:900px){.grid-3{grid-template-columns:1fr}.grid-4{grid-template-columns:1fr}.grid-6{grid-template-columns:repeat(3,1fr)}}
-    @media (max-width:520px){.grid-6{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:900px){.grid-3{grid-template-columns:1fr}.grid-4{grid-template-columns:1fr}}
+
     .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:18px;transition:.15s ease}
     .card:hover{transform:translateY(-2px);border-color:rgba(37,99,235,.7);box-shadow:0 6px 24px rgba(37,99,235,.08)}
     .muted{color:var(--muted)}
+
+    /* Accordion */
     .acc{border:1px solid var(--border);border-radius:24px;overflow:hidden;background:#fff}
     .acc-item{border-top:1px solid var(--border)}
     .acc-item:first-child{border-top:0}
-    .acc-btn{width:100%;text-align:left;padding:16px;border:0;background:transparent;display:flex;align-items:center;justify-content:space-between;font-weight:600;cursor:pointer;border-radius:14px;margin:4px}
+    .acc-btn{width:100%;text-align:left;padding:16px;border:0;background:transparent;display:flex;align-items:center;justify-content:space-between;font-weight:700;cursor:pointer;border-radius:14px;margin:4px}
     .acc-title{font-size:var(--acc-title)}
     .acc-btn:hover{background:#eef2ff;color:#1d4ed8}
     .acc-panel{max-height:0;overflow:hidden;transition:max-height .25s ease,padding .25s ease;padding:0 16px}
-    .acc-item.open .acc-panel{max-height:600px;padding:0 16px 16px}
-    .logo-box{aspect-ratio:3/1;border-radius:14px;border:1px solid var(--border);background:#f3f6fb;display:grid;place-items:center;padding:8px}
-    .logo-img{max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(0.1)}
+    .acc-item.open .acc-panel{max-height:1200px;padding:0 16px 16px}
+    .acc-panel p{margin:10px 0}
+    .acc-panel ul{margin:8px 0 0 18px}
+
+    /* Logos – pur, ohne Rahmen */
+    .logos-head{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .ref-note{font-size:12px;color:var(--muted)}
+    .marquee{overflow:hidden;margin-top:12px}
+    .marquee-track{display:flex;align-items:center;gap:42px;width:max-content;animation:marq 28s linear infinite}
+    @keyframes marq{from{transform:translateX(0)} to{transform:translateX(-50%)}}
+    .logo-img{height:42px;display:block;object-fit:contain;filter:none;opacity:.95}
+
+    /* Footer */
     footer{border-top:1px solid var(--border);padding:28px 0;color:#6b7280;font-size:14px}
     .foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
     .links{display:flex;gap:18px}
     .links a:hover{color:var(--blue)}
+
     .dark{background:#0a0a0a;color:#fff}
     .input{padding:10px 12px;border:1px solid var(--border);border-radius:12px;width:100%}
     textarea.input{resize:vertical}
@@ -81,13 +101,15 @@
 </header>
 
 <main>
+  <!-- HERO full-width blue -->
   <section class="hero">
     <div class="wrap">
-      <h1>Klare Ästhetik. Konstante Outputs.</h1>
-      <p class="lead">Creative Direction, Social Video und Visual Identity – als monatliches System. Planbar, konsistent, ruhig im Ton.</p>
+      <h1>Monatlicher Output, echte Resultate.<br>Kein Blabla, kein Agentursprech.</h1>
+      <p class="hero-sub">Wir denken Marken als System – aktuell, kulturell, konsistent.<br>Creative Direction, Social Video und Visual Identity – als monatliches System.</p>
     </div>
   </section>
 
+  <!-- Blue info with bold ticks -->
   <div class="blue">
     <div class="wrap grid" style="grid-template-columns:1.2fr .8fr;gap:28px">
       <div class="box">
@@ -104,41 +126,307 @@
     </div>
   </div>
 
+  <!-- Leistungen -->
   <section id="leistungen">
     <div class="wrap">
       <h2>Leistungen</h2>
       <div class="grid grid-3" style="margin-top:24px">
-        <div class="card"><h3>Creative Direction &amp; Supervision</h3><p class="muted">Entwicklung und Pflege der visuellen Identität...</p></div>
-        <div class="card"><h3>Social Media Video Production</h3><p class="muted">Output-getriebene Arbeit für Reichweite...</p></div>
-        <div class="card"><h3>High-End Visual Identity Packages</h3><p class="muted">Systematische Markenarbeit für Wiedererkennbarkeit...</p></div>
+        <div class="card"><h3>Creative Direction &amp; Supervision</h3><p class="muted">Entwicklung und Pflege der visuellen Identität. Festlegung von Licht, Farbe, Typografie, Motion und Tonalität als System.</p></div>
+        <div class="card"><h3>Social Media Video Production</h3><p class="muted">Reels, Shorts, Story-Snippets und Hook-Tests für Reichweite und Rhythmus. Sauber produziert, konsistent veröffentlicht.</p></div>
+        <div class="card"><h3>High-End Visual Identity Packages</h3><p class="muted">Foto-Assets, Templates, Brandfilm-Stills, Motion-Guidelines – als lebendiges Look-System.</p></div>
       </div>
     </div>
   </section>
 
+  <!-- Marken-Logos: pur + Marquee + Referenz-Note rechts -->
   <section id="cases">
     <div class="wrap">
-      <h2>Für Marken wie …</h2>
-      <div class="grid grid-6" style="margin-top:16px">
-        <div class="logo-box"><img class="logo-img" src="logo1.png" alt="Logo 1"></div>
-        <div class="logo-box"><img class="logo-img" src="logo2.png" alt="Logo 2"></div>
-        <div class="logo-box"><img class="logo-img" src="logo3.png" alt="Logo 3"></div>
+      <div class="logos-head">
+        <h2>Für Marken wie …</h2>
+        <span class="ref-note">Referenzen von MacDuke</span>
+      </div>
+      <div class="marquee" aria-label="Markenlogos, Endlosschleife">
+        <div class="marquee-track">
+          <!-- Sequenz A -->
+          <img class="logo-img" src="logo1.png" alt="Logo 1">
+          <img class="logo-img" src="logo2.png" alt="Logo 2">
+          <img class="logo-img" src="logo3.png" alt="Logo 3">
+          <img class="logo-img" src="logo4.png" alt="Logo 4">
+          <img class="logo-img" src="logo5.png" alt="Logo 5">
+          <img class="logo-img" src="logo6.png" alt="Logo 6">
+          <!-- Sequenz B (Duplikat für nahtlosen Loop) -->
+          <img class="logo-img" src="logo1.png" alt="Logo 1">
+          <img class="logo-img" src="logo2.png" alt="Logo 2">
+          <img class="logo-img" src="logo3.png" alt="Logo 3">
+          <img class="logo-img" src="logo4.png" alt="Logo 4">
+          <img class="logo-img" src="logo5.png" alt="Logo 5">
+          <img class="logo-img" src="logo6.png" alt="Logo 6">
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Branchen (Accordion, nur Texte aktualisiert) -->
   <section id="branchen">
     <div class="wrap">
       <h2>Branchen &amp; Spezialisierungen</h2>
       <div class="acc" style="margin-top:20px">
-        <div class="acc-item"><button class="acc-btn"><span class="acc-title">Cosmetics &amp; Skincare</span><span>＋</span></button><div class="acc-panel"><p class="muted">Marken im Bereich Skincare und Beauty …</p></div></div>
-        <div class="acc-item"><button class="acc-btn"><span class="acc-title">Spirits &amp; Food Brands</span><span>＋</span></button><div class="acc-panel"><p class="muted">Premium-Produkte werden über Atmosphäre verkauft.</p></div></div>
-        <div class="acc-item"><button class="acc-btn"><span class="acc-title">Tech &amp; AI Tools</span><span>＋</span></button><div class="acc-panel"><p class="muted">Technologische Marken brauchen visuelle Klarheit.</p></div></div>
-        <div class="acc-item"><button class="acc-btn"><span class="acc-title">Hotels / Boutique Hospitality</span><span>＋</span></button><div class="acc-panel"><p class="muted">Atmosphäre schlägt Grundriss.</p></div></div>
-        <div class="acc-item"><button class="acc-btn"><span class="acc-title">People &amp; Brand Identity</span><span>＋</span></button><div class="acc-panel"><p class="muted">Charakter zeigen – aber professionell.</p></div></div>
+        <!-- Cosmetics & Skincare -->
+        <div class="acc-item">
+          <button class="acc-btn"><span class="acc-title">Cosmetics &amp; Skincare</span><span>＋</span></button>
+          <div class="acc-panel">
+            <p>Marken aus dem Bereich Beauty und Skincare stehen vor der Aufgabe, Vertrauen, Qualität und Ruhe in einem zunehmend schnellen Umfeld zu kommunizieren. Eine konsistente visuelle Sprache ist entscheidend, um Glaubwürdigkeit und Hochwertigkeit zu vermitteln.</p>
+            <p><strong style="color:#1d4ed8">Pflege, die man sieht – Textur, Licht, Vertrauen.</strong></p>
+            <p>Ein Beispiel: Reels, die eine Pflegeroutine erzählen – klare Texturen, echtes Hautlicht, natürliche Bewegung. Sanfte Farbwelten und minimalistisches Set-Design transportieren Reinheit und Präzision. Jede Szene zeigt, wie sich gute Pflege anfühlt, nicht nur, wie sie aussieht.</p>
+            <p class="muted" style="font-weight:600">Monatlicher Output (Beispiel):</p>
+            <ul>
+              <li>2 Reels (Routine / Textur / Anwendung)</li>
+              <li>1 Foto-Set (8–12 Motive)</li>
+              <li>Licht- &amp; Farb-Template für Feed und Stories</li>
+              <li>UGC-Kooperationen mit Micro-Creators (Echtheitsfokus)</li>
+              <li>Monatlicher Performance-Report</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <!-- Spirits & Food Brands -->
+        <div class="acc-item">
+          <button class="acc-btn"><span class="acc-title">Spirits &amp; Food Brands</span><span>＋</span></button>
+          <div class="acc-panel">
+            <p>Bei Premium-Getränken und Feinkost entsteht Begehrlichkeit über Atmosphäre, nicht über Zutaten. Ein markanter Look schafft Wiedererkennung, bevor das Produkt probiert wurde.</p>
+            <p><strong style="color:#1d4ed8">Geschmack wird Bild.</strong></p>
+            <p>Ein Beispiel: Tabletop-Sequenzen aus Bewegung, Glas, Reflexion und Dampf, kombiniert mit ruhigen Szenen aus Bar oder Natur. Kurze Filme, die Stimmung transportieren, ohne plakativ zu sein.</p>
+            <p class="muted" style="font-weight:600">Monatlicher Output (Beispiel):</p>
+            <ul>
+              <li>3 Reels (Tabletop, Lifestyle, Launch)</li>
+              <li>On-Location-Shooting (Bar / Outdoor)</li>
+              <li>Produktfotografie mit natürlichem Licht</li>
+              <li>CGC-Content (Creator-Collabs mit Fokus auf Stil &amp; Genuss)</li>
+              <li>Quartalsweiser Look-Refresh</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <!-- Tech & AI Tools -->
+        <div class="acc-item">
+          <button class="acc-btn"><span class="acc-title">Tech &amp; AI Tools</span><span>＋</span></button>
+          <div class="acc-panel">
+            <p>Technologische Marken benötigen Klarheit, um Vertrauen zu schaffen. Ein kohärenter visueller Stil kann komplexe Produkte emotional zugänglich machen.</p>
+            <p><strong style="color:#1d4ed8">Komplexes einfach zeigen.</strong></p>
+            <p>Ein Beispiel: Feature-Explainer mit Motion-Overlays, dezente 3D-Elemente, kurze Statements zu Nutzen und Wirkung. Präzise, ruhig und grafisch kontrolliert. So entsteht ein Look, der Intelligenz sichtbar macht.</p>
+            <p class="muted" style="font-weight:600">Monatlicher Output (Beispiel):</p>
+            <ul>
+              <li>2 Produkt-/Feature-Reels (15–25 Sek.)</li>
+              <li>3 LinkedIn-Clips im einheitlichen Motion-Stil</li>
+              <li>Hero-Visuals für Website und Decks</li>
+              <li>Template-System für Reels / Slides</li>
+              <li>Look-Guideline zur visuellen Konsistenz</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <!-- Hotels / Boutique Hospitality -->
+        <div class="acc-item">
+          <button class="acc-btn"><span class="acc-title">Hotels / Boutique Hospitality</span><span>＋</span></button>
+          <div class="acc-panel">
+            <p>Gäste entscheiden heute über Atmosphäre. Die Kunst liegt darin, Emotion und Raumgefühl zu verbinden, statt Interieur zu dokumentieren.</p>
+            <p><strong style="color:#1d4ed8">Atmosphäre schlägt Grundriss.</strong></p>
+            <p>Ein Beispiel: Eine Tagessequenz von der Morgensonne bis zum Abendlicht. Bewegung, Lichtverlauf, Raumklang. Kein klassischer Werbefilm, sondern Gefühl von Ankommen.</p>
+            <p class="muted" style="font-weight:600">Monatlicher Output (Beispiel):</p>
+            <ul>
+              <li>2 Reels (Roomstory &amp; Lifestyle)</li>
+              <li>10 Foto-Motive (Details, Licht, Gäste)</li>
+              <li>Story-Vorlagen mit saisonalen CTAs</li>
+              <li>Influencer Stay / UGC Integration</li>
+              <li>Quartalsweiser Mood-Check</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <!-- Gastro & Lifestyle-Orte -->
+        <div class="acc-item">
+          <button class="acc-btn"><span class="acc-title">Gastro &amp; Lifestyle-Orte</span><span>＋</span></button>
+          <div class="acc-panel">
+            <p>Essen, Klang und Bewegung schaffen Identität. Eine durchdachte visuelle Handschrift verstärkt Wiedererkennung und Authentizität.</p>
+            <p><strong style="color:#1d4ed8">Man will’s fast riechen.</strong></p>
+            <p>Ein Beispiel: Kamera folgt einem Teller vom Pass bis zum Tisch. Schnitt auf das Lächeln des Gastes, dann Lichtwechsel, Musik, Close-Up. Ein Mikrofilm, der Atmosphäre dokumentiert.</p>
+            <p class="muted" style="font-weight:600">Monatlicher Output (Beispiel):</p>
+            <ul>
+              <li>3 Reels (Signature Dish, Team, Gäste)</li>
+              <li>Foto-Set (Food &amp; Interior)</li>
+              <li>Story-Bundles für Wochen-Highlights</li>
+              <li>Kooperation mit lokalen Food-Creators (UGC)</li>
+              <li>Monatlicher Look-Abgleich</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <!-- Automotive & Mobility -->
+        <div class="acc-item">
+          <button class="acc-btn"><span class="acc-title">Automotive &amp; Mobility</span><span>＋</span></button>
+          <div class="acc-panel">
+            <p>Bewegung ist Design – und Design ist Kommunikation. Eine präzise, visuelle Sprache übersetzt Technik in Emotion.</p>
+            <p><strong style="color:#1d4ed8">Präzision im Bild.</strong></p>
+            <p>Ein Beispiel: Performance-Clips aus Reflexen, Details, Geschwindigkeit. Rollshots und Lichtstudien, die Struktur zeigen, nicht nur Form. Das Fahrzeug wird zum Charakter.</p>
+            <p class="muted" style="font-weight:600">Monatlicher Output (Beispiel):</p>
+            <ul>
+              <li>2–3 Performance-Reels</li>
+              <li>1 Studio-Shooting (Detail &amp; Lichtstudie)</li>
+              <li>Motion-Templates für Specs / Features</li>
+              <li>CGC-Partnerschaften mit Automotive-Creators</li>
+              <li>Visueller Qualitätscheck pro Quartal</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <!-- Music & Culture Labels -->
+        <div class="acc-item">
+          <button class="acc-btn"><span class="acc-title">Music &amp; Culture Labels</span><span>＋</span></button>
+          <div class="acc-panel">
+            <p>Künstler und Labels leben von Wiedererkennbarkeit. Sound braucht ein visuelles System, das Haltung zeigt.</p>
+            <p><strong style="color:#1d4ed8">Sound sichtbar machen.</strong></p>
+            <p>Ein Beispiel: Kurzloops, die Beats und Texturen verbinden – Farben, Licht, Bewegung passend zum Sound. Gleichbleibender Look für Releases, Teaser, Tourdaten.</p>
+            <p class="muted" style="font-weight:600">Monatlicher Output (Beispiel):</p>
+            <ul>
+              <li>2–3 Visualizer / Teaser</li>
+              <li>Spotify Canvas &amp; Artist Loops</li>
+              <li>Foto-Set für Artist / Event</li>
+              <li>CGC-Clips von Fans oder DJs</li>
+              <li>Template für Social-Ankündigungen</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <!-- Interior & Furniture Brands -->
+        <div class="acc-item">
+          <button class="acc-btn"><span class="acc-title">Interior &amp; Furniture Brands</span><span>＋</span></button>
+          <div class="acc-panel">
+            <p>Räume erzählen, wenn sie richtig inszeniert werden. Design lebt durch Licht, Textur und Materialruhe.</p>
+            <p><strong style="color:#1d4ed8">Material erzählen.</strong></p>
+            <p>Ein Beispiel: Softlight auf Holz, Stoff oder Metall. Bewegung durch Schatten, minimale Farbverläufe. Weniger Katalog, mehr Atmosphäre.</p>
+            <p class="muted" style="font-weight:600">Monatlicher Output (Beispiel):</p>
+            <ul>
+              <li>1 On-Location Foto-Set</li>
+              <li>2 Mood-Reels (Material &amp; Raumwirkung)</li>
+              <li>Preset- &amp; Export-System für Social</li>
+              <li>Kooperation mit Interior-Creators (CGC)</li>
+              <li>Quartalsweiser Setup-Plan</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <!-- Real Estate – Lifestyle -->
+        <div class="acc-item">
+          <button class="acc-btn"><span class="acc-title">Real Estate – Lifestyle</span><span>＋</span></button>
+          <div class="acc-panel">
+            <p>Hochwertige Objekte gewinnen durch Gefühl, nicht durch Quadratmeterangaben.</p>
+            <p><strong style="color:#1d4ed8">Lebensgefühl, nicht Fläche.</strong></p>
+            <p>Ein Beispiel: Eine Person bewegt sich durch Raum und Licht. Ein leiser Sound, natürliche Bewegung, klare Komposition. Das Objekt wirkt nicht statisch, sondern bewohnt.</p>
+            <p class="muted" style="font-weight:600">Monatlicher Output (Beispiel):</p>
+            <ul>
+              <li>1–2 Showcase-Reels</li>
+              <li>8–12 Foto-Motive (Tageslicht &amp; Details)</li>
+              <li>Social-Exposé-Vorlage (1:1 &amp; 9:16)</li>
+              <li>Creator Walkthroughs (CGC/UGC)</li>
+              <li>Saisonaler Look-Refresh</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <!-- Luxury Food & Drinks -->
+        <div class="acc-item">
+          <button class="acc-btn"><span class="acc-title">Luxury Food &amp; Drinks</span><span>＋</span></button>
+          <div class="acc-panel">
+            <p>Echte Qualität zeigt sich in Geduld, Licht und Textur.</p>
+            <p><strong style="color:#1d4ed8">Qualität atmen lassen.</strong></p>
+            <p>Ein Beispiel: Makro-Shots von Pour-Momenten, Oberflächen, Patina. Ruhige Schnitte, dezente Musik, kein künstliches Styling. Der Fokus liegt auf Substanz.</p>
+            <p class="muted" style="font-weight:600">Monatlicher Output (Beispiel):</p>
+            <ul>
+              <li>2 Produkt-/Mood-Reels</li>
+              <li>Makro-Fotopaket (8–10 Bilder)</li>
+              <li>Packaging-Shorts / Detail-Videos</li>
+              <li>UGC-Integrationen mit High-End-Food Creators</li>
+              <li>Look-Guideline zur Lichtcharakteristik</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <!-- Beauty Studios / Hair -->
+        <div class="acc-item">
+          <button class="acc-btn"><span class="acc-title">Beauty Studios / Hair</span><span>＋</span></button>
+          <div class="acc-panel">
+            <p>Handwerk braucht Bühne – und Konstanz. Ein visuelles System schafft Vertrauen und Professionalität.</p>
+            <p><strong style="color:#1d4ed8">Dein Look braucht Bühne.</strong></p>
+            <p>Ein Beispiel: identisches Licht, gleiche Kamera, ruhige Bewegung. Fokus auf Technik, Glanz, Textur. Keine Filter, keine Ablenkung – nur Präzision.</p>
+            <p class="muted" style="font-weight:600">Monatlicher Output (Beispiel):</p>
+            <ul>
+              <li>3 Reels (Before/After, Detail, Bewegung)</li>
+              <li>Portrait-Shooting (8–10 Fotos)</li>
+              <li>Story-Vorlagen / FAQ-Templates</li>
+              <li>UGC-Clips mit echten Kunden</li>
+              <li>Monatsweiser Look-Check</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <!-- Fashion Boutiques -->
+        <div class="acc-item">
+          <button class="acc-btn"><span class="acc-title">Fashion Boutiques</span><span>＋</span></button>
+          <div class="acc-panel">
+            <p>Modekommunikation funktioniert über Haltung und Geschwindigkeit.</p>
+            <p><strong style="color:#1d4ed8">Entscheidung in drei Sekunden.</strong></p>
+            <p>Ein Beispiel: Try-on-Clips mit klarer Bewegung, ruhigem Hintergrund, abgestimmtem Farbkonzept. Keine Eile, nur Präzision. Look, Schnitt, Stimmung – alles konsistent.</p>
+            <p class="muted" style="font-weight:600">Monatlicher Output (Beispiel):</p>
+            <ul>
+              <li>2 Lookbook-Reels</li>
+              <li>Flatlay- &amp; Store-Fotografie</li>
+              <li>Drop-Story-Vorlagen (Countdown, CTA)</li>
+              <li>CGC-Content mit Mode-Creators</li>
+              <li>Saisonales Style-Update</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <!-- Cosmetics & Fashion Hybrids / Lifestyle Brands -->
+        <div class="acc-item">
+          <button class="acc-btn"><span class="acc-title">Cosmetics &amp; Fashion Hybrids / Lifestyle Brands</span><span>＋</span></button>
+          <div class="acc-panel">
+            <p>Grenzen zwischen Beauty, Fashion und Lifestyle verschwimmen – Marken müssen Kohärenz schaffen, um Charakter zu behalten.</p>
+            <p><strong style="color:#1d4ed8">Ästhetik als System.</strong></p>
+            <p>Ein Beispiel: Cross-Content zwischen Produkt, People und Space. Einheitliches Licht, Farbe, Musik und Textur ergeben eine Welt, die wiedererkennbar bleibt.</p>
+            <p class="muted" style="font-weight:600">Monatlicher Output (Beispiel):</p>
+            <ul>
+              <li>3 Cross-Reels (Product / Space / Lifestyle)</li>
+              <li>Foto-Mix-Serie für Lookbooks</li>
+              <li>CGC-Creator Features</li>
+              <li>Story-Kampagne über Marke und Mood</li>
+              <li>Looksystem-Refresh pro Quartal</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-item"><hr style="border:0;border-top:1px dashed var(--border);margin:0"></div>
+        <!-- People & Brand Identity -->
+        <div class="acc-item">
+          <button class="acc-btn"><span class="acc-title">People &amp; Brand Identity</span><span>＋</span></button>
+          <div class="acc-panel">
+            <p>Unternehmer, Coaches oder Führungskräfte werden zunehmend zu Medienmarken. Sichtbarkeit entsteht über Haltung, nicht über Lautstärke.</p>
+            <p><strong style="color:#1d4ed8">Charakter zeigen – aber professionell.</strong></p>
+            <p>Ein Beispiel: authentische Reels oder LinkedIn-Clips, die Einblicke in Arbeitsweise, Projekte oder Denkweise geben. Keine Selbstinszenierung, sondern visuelle Glaubwürdigkeit. Portraits, Short-Dokus, ruhige Schnitte, einheitlicher Look.</p>
+            <p class="muted" style="font-weight:600">Monatlicher Output (Beispiel):</p>
+            <ul>
+              <li>2–3 Storytelling-Reels (Alltag, Werte, Insights)</li>
+              <li>Portrait-/Lifestyle-Shooting (Foto + Kurzinterview)</li>
+              <li>LinkedIn-/Instagram-Vorlagen (Quote, Statement, CTA)</li>
+              <li>CGC-Kooperationen oder Creator-Testimonials</li>
+              <li>Monatlicher Look- &amp; Performance-Report</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Prozess -->
   <section id="prozess">
     <div class="wrap">
       <h2>Prozess</h2>
@@ -151,17 +439,56 @@
     </div>
   </section>
 
+  <!-- Pakete (detaillierter, Tabs) -->
   <section id="pakete">
     <div class="wrap">
       <h2>Retainer-Pakete</h2>
-      <div class="grid grid-3" style="margin-top:24px">
-        <div class="card"><h3>S – Einstieg</h3><p class="muted">Supervision light, 2 Reels oder 1 Shoot...</p></div>
-        <div class="card"><h3>M – Wachstum</h3><p class="muted">Vollständige Creative Direction, 4 Reels + 1 Fotopaket...</p></div>
-        <div class="card"><h3>L – Skalierung</h3><p class="muted">CD + Social + Identity kombiniert, 6–8 Reels + 2 Shoots...</p></div>
+      <div style="margin-top:16px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
+        <div class="tabs" role="tablist" style="display:flex;gap:8px;background:#f8fafc;border:1px solid var(--border);border-radius:16px;padding:6px">
+          <button class="tab" role="tab" aria-selected="false" data-tab="s" style="padding:.45rem .8rem;border-radius:12px;border:1px solid transparent;font-weight:700;cursor:pointer">S</button>
+          <button class="tab" role="tab" aria-selected="true"  data-tab="m" style="padding:.45rem .8rem;border-radius:12px;border:1px solid transparent;font-weight:700;cursor:pointer">M</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="l" style="padding:.45rem .8rem;border-radius:12px;border:1px solid transparent;font-weight:700;cursor:pointer">L</button>
+        </div>
+        <div style="flex:1;min-width:320px">
+          <div class="card tabpanel" data-panel="s" hidden>
+            <h3 style="margin:0 0 8px;font-size:18px">S – Einstieg</h3>
+            <p class="muted">Supervision light, 2 Reels oder 1 Shoot, Look-Setup &amp; Export-Vorlagen, kurzer Monats-Report.</p>
+            <ul class="muted" style="margin:8px 0 0 18px">
+              <li>Grundlegende Look-Definition (Farbe, Licht, Typo)</li>
+              <li>2 Inhalte/Monat (Video oder Foto)</li>
+              <li>Leichter Redaktionsplan</li>
+              <li>Review-Call am Monatsende</li>
+            </ul>
+          </div>
+          <div class="card tabpanel" data-panel="m">
+            <h3 style="margin:0 0 8px;font-size:18px;display:flex;justify-content:space-between;align-items:center">
+              <span>M – Wachstum</span><span style="background:var(--blue);color:#fff;border-radius:999px;padding:.25rem .6rem;font-size:12px">Empfehlung</span>
+            </h3>
+            <p class="muted">Vollständige Creative Direction, 4 Reels + 1 Fotopaket, Hook-Varianten &amp; A/B-Testing, quartalsweises Look-Refresh.</p>
+            <ul class="muted" style="margin:8px 0 0 18px">
+              <li>Look-System + Motion-Guidelines</li>
+              <li>4 Reels/Monat + Fotopaket (10–12 Bilder)</li>
+              <li>Hook-Tests, A/B-Varianten</li>
+              <li>Quartalsweiser Look-Refresh &amp; Reporting</li>
+            </ul>
+          </div>
+          <div class="card tabpanel" data-panel="l" hidden>
+            <h3 style="margin:0 0 8px;font-size:18px">L – Skalierung</h3>
+            <p class="muted">CD + Social + Identity kombiniert, 6–8 Reels + 2 Shoots, Kampagnen-Klammer &amp; Launch-Support, lebendiges Brand-Dokument.</p>
+            <ul class="muted" style="margin:8px 0 0 18px">
+              <li>Umfassende Creative Direction &amp; Supervision</li>
+              <li>6–8 Reels/Monat + 2 Produktionen</li>
+              <li>Kampagnen-Klammer &amp; Launch-Support</li>
+              <li>Fortlaufendes Brand-Dokument</li>
+            </ul>
+          </div>
+          <p class="muted" style="font-size:12px;margin-top:8px">Richtwerte. Final nach Umfang, Laufzeit (3–12 Monate) und Produktionsaufwand.</p>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Kontakt -->
   <section id="kontakt" class="dark">
     <div class="wrap" style="display:grid;gap:28px;grid-template-columns:1fr 1fr">
       <div>
@@ -194,6 +521,7 @@
 
 <script>
   document.getElementById('y').textContent=new Date().getFullYear();
+  // Accordion
   document.querySelectorAll('.acc-item').forEach(it=>{
     const btn=it.querySelector('.acc-btn');
     btn.addEventListener('click',()=>{
@@ -202,6 +530,15 @@
       if(!open) it.classList.add('open');
     });
   });
+  // Tabs (Pakete)
+  const tabs=document.querySelectorAll('.tab');
+  const panels=document.querySelectorAll('.tabpanel');
+  function showTab(val){
+    tabs.forEach(t=>t.setAttribute('aria-selected', t.dataset.tab===val ? 'true' : 'false'));
+    panels.forEach(p=>p.hidden = p.dataset.panel!==val);
+  }
+  tabs.forEach(t=>t.addEventListener('click',()=>showTab(t.dataset.tab)));
+  showTab('m');
 </script>
 </body>
 </html>
