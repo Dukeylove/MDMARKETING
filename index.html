@@ -294,24 +294,14 @@
   .case-arrow.right{right:10px}
 </style>
 
-<style>
-  /* Case Study Slider (verbessert: Hover ohne Cropping, Loop-ready) */
-  .case-track{display:flex;gap:20px;width:max-content}
-  .case-item{position:relative;flex:0 0 auto;width:250px;height:500px;border-radius:20px;overflow:visible;cursor:pointer}
-  .case-item img{width:100%;height:100%;object-fit:cover;border-radius:20px;transition:transform .3s ease, box-shadow .3s ease}
-  .case-item:hover img{transform:scale(1.08);box-shadow:0 20px 60px rgba(0,0,0,.25)}
-  .case-overlay{position:absolute;inset:0;border-radius:20px;background:rgba(0,0,0,.35);color:#fff;display:flex;align-items:flex-end;justify-content:center;font-weight:600;padding:16px;opacity:0;transition:opacity .3s ease}
-  .case-item:hover .case-overlay{opacity:1}
-  .case-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);color:#fff;border:none;font-size:32px;padding:10px 16px;cursor:pointer;border-radius:10px;z-index:5;transition:background .2s ease}
-  .case-arrow:hover{background:rgba(0,0,0,.7)}
-  .case-arrow.left{left:10px}
-  .case-arrow.right{right:10px}
-</style>
+
 
   <!-- Branchen (Accordion, alle unabhängig öffnend) -->
-  $1
-      <p style="color:#f5f5f5;max-width:900px;margin-top:6px">Was das bedeutet: Wir denken Content **branchen-spezifisch**. Jede Branche hat andere Codes, Tempi und Erwartungen – darauf passen wir Ton, Licht, Bewegung und Format an. Unten siehst du Beispiele, wie das inhaltlich und im monatlichen Output aussieht.</p>
-      <div class="acc" style="margin-top:20px; background:#fff;">
+<section id="branchen" style="background:#000;">
+  <div class="wrap" style="color:#f5f5f5;">
+    <h2>Branchen &amp; Spezialisierungen</h2>
+    <p style="color:#f5f5f5;max-width:900px;margin-top:6px">Was das bedeutet: Wir denken Content <strong>branchen‑spezifisch</strong>. Jede Branche hat eigene Codes, Tempi und Erwartungen – danach richten wir Ton, Licht, Bewegung und Format. Unten ein paar Beispiele inkl. monatlichem Output.</p>
+    <div class="acc" style="margin-top:20px; background:#fff;" style="margin-top:20px; background:#fff;">
         <!-- Cosmetics & Skincare -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Cosmetics &amp; Skincare</span><span>＋</span></button>
@@ -711,24 +701,19 @@
     const container=document.querySelector('.case-container');
     const track=document.querySelector('.case-track');
     if(!container||!track) return;
-    // Dupliziere Items für nahtlosen Loop
+    // Dupliziere Items für nahtlosen Loop (auch bei 7 Items)
     const items=[...track.children];
     track.innerHTML='';
     const all=[...items, ...items];
     all.forEach(n=>track.appendChild(n.cloneNode(true)));
 
     let x=0;            // aktuelle Position (px)
-    let speed=0.5;      // Auto-Geschwindigkeit (px/frame)
+    let speed=0.8;      // Auto-Geschwindigkeit (px/frame)
     let paused=false;
-    function widthHalf(){
-      // Hälfte, weil wir doppelt befüllt haben
-      return track.scrollWidth/2;
-    }
+    function half(){ return track.scrollWidth/2 }
     function step(){
       if(!paused){
-        x-=speed;
-        const w=widthHalf();
-        if(Math.abs(x)>=w){ x=0; }
+        x-=speed; const w=half(); if(Math.abs(x)>=w){ x=0; }
         track.style.transform=`translateX(${x}px)`;
       }
       requestAnimationFrame(step);
@@ -738,4 +723,21 @@
     container.addEventListener('mouseenter',()=>paused=true);
     container.addEventListener('mouseleave',()=>paused=false);
 
-    const left=document.querySelect
+    const left=container.querySelector('.case-arrow.left');
+    const right=container.querySelector('.case-arrow.right');
+    function jump(delta){ paused=true; x+=delta; track.style.transform=`translateX(${x}px)`; setTimeout(()=>paused=false,400); }
+    left && left.addEventListener('click',()=>jump(300));
+    right && right.addEventListener('click',()=>jump(-300));
+
+    // Klick = starker Textschatten auf aktivem Case
+    track.addEventListener('click',e=>{
+      const item=e.target.closest('.case-item');
+      if(!item) return;
+      track.querySelectorAll('.case-item.focus').forEach(i=>i.classList.remove('focus'));
+      item.classList.add('focus');
+    });
+  })();
+</script>
+
+</body>
+</html>
