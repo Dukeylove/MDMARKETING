@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Datenschutz – MacDuke Marketing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --blue:#2563eb; --text:#0a0a0a; --muted:#6b7280;
+      --border:#e5e7eb; --bg:#fff; --radius:18px; --max:1200px;
+    }
+    *{box-sizing:border-box} html,body{margin:0;padding:0}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
+    a{color:var(--blue);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+
+    /* Header (wie Hauptseite) */
+    header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(6px);background:rgba(255,255,255,.85);border-bottom:1px solid var(--border)}
+    nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:600}
+    .dot{width:28px;height:28px;border-radius:12px;background:var(--blue)}
+    .menu{display:flex;gap:22px;align-items:center}
+    .menu a:hover{color:var(--blue)}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .9rem;border-radius:999px;background:var(--blue);color:#fff;font-weight:700}
+    .btn:hover{filter:brightness(.95)}
+    @media (max-width:900px){.menu{display:none}}
+
+    /* Main */
+    main{padding:80px 0;min-height:70vh}
+    h1{font-size:clamp(28px,4vw,48px);margin-bottom:20px;line-height:1.2}
+    h2{font-size:22px;margin-top:40px;margin-bottom:12px}
+    p{margin:8px 0}
+    ul{margin:8px 0 8px 20px}
+    code{background:#f3f4f6;border:1px solid #e5e7eb;border-radius:6px;padding:1px 6px}
+    .content{max-width:900px;margin:0 auto}
+    .note{color:var(--muted);font-size:14px}
+
+    /* Boxen optional */
+    .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:18px}
+
+    /* Footer */
+    footer{border-top:1px solid var(--border);padding:28px 0;color:#6b7280;font-size:14px}
+    .foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .links{display:flex;gap:18px}
+    .links a:hover{color:var(--blue)}
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand"><div class="dot"></div><span>MacDuke Marketing</span></div>
+      <div class="menu">
+        <a href="index.html#top">Home</a>
+        <a href="index.html#leistungen">Leistungen</a>
+        <a href="index.html#branchen">Branchen</a>
+        <a href="index.html#prozess">Prozess</a>
+        <a href="index.html#pakete">Pakete</a>
+        <a href="index.html#kontakt">Kontakt</a>
+        <a class="btn" href="https://www.instagram.com/macduke" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap content">
+    <h1>Datenschutzerklärung</h1>
+    <p class="note">Stand: <span id="ds-date"></span></p>
+
+    <h2>1. Verantwortlicher</h2>
+    <p>
+      MacDuke Marketing<br>
+      Inhaber: Patryk Duk<br>
+      Sophie-Charlotten-Straße 37, 14059 Berlin, Deutschland
+    </p>
+    <p>E-Mail: <a href="mailto:marketing@macduke.com">marketing@macduke.com</a><br>
+      Website: <a href="http://marketing.macduke.de" target="_blank" rel="noopener">marketing.macduke.de</a>
+    </p>
+
+    <h2>2. Allgemeines zur Datenverarbeitung</h2>
+    <p>Wir verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich ist (Art. 6 Abs. 1 lit. b, lit. f DSGVO). Eine Weitergabe an Dritte erfolgt nur, wenn hierfür eine gesetzliche Grundlage besteht.</p>
+
+    <h2>3. Hosting & Server-Logfiles</h2>
+    <p>Beim Aufruf dieser Website werden durch den Webserver automatisch Logfiles erfasst: IP-Adresse, Datum/Uhrzeit, aufgerufene URL, Referrer-URL (sofern übermittelt), User-Agent, HTTP-Statuscode, übertragene Datenmenge.</p>
+    <p><strong>Zweck:</strong> Auslieferung der Website, Stabilität, Sicherheit (Art. 6 Abs. 1 lit. f DSGVO).<br>
+       <strong>Speicherdauer:</strong> Logdaten werden i. d. R. nach 7–14 Tagen gelöscht, sofern keine sicherheitsrelevante Auswertung erforderlich ist.</p>
+
+    <h2>4. Kontaktaufnahme über das Formular (Formspree)</h2>
+    <p>Für unser Kontaktformular verwenden wir den Dienst <strong>Formspree</strong> (Formspree, Inc.). Wenn du das Formular absendest, werden die von dir eingegebenen Daten an Formspree übermittelt und an uns per E-Mail weitergeleitet.</p>
+    <div class="card">
+      <p><strong>Erhobene Daten (je nach Feld):</strong> Name/Firma, E-Mail, Website/Instagram (optional), Branche/Bereich, Freitext-Nachricht; technisch kann Formspree zusätzlich Metadaten verarbeiten (z. B. IP-Adresse, Zeitstempel, User-Agent) zur Missbrauchs-/Spam-Prävention.</p>
+      <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) bzw. lit. f DSGVO (berechtigte Interessen an effizienter Anfragebearbeitung). Bei freiwilligen Zusatzangaben: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung).</p>
+      <p><strong>Empfänger:</strong> Formspree, Inc. (Auftragsverarbeiter).<br>
+         <strong>Datenübermittlung in Drittländer:</strong> Eine Übermittlung in die USA kann stattfinden. Wir haben Formspree so ausgewählt, dass ein angemessenes Datenschutzniveau besteht (u. a. durch Standardvertragsklauseln). Details siehe die Datenschutzhinweise von Formspree.</p>
+      <p><strong>Speicherdauer:</strong> Wir speichern Anfragen so lange, wie es zur Bearbeitung und Dokumentation erforderlich ist (regelmäßig 6–24 Monate), oder solange gesetzliche Aufbewahrungspflichten bestehen.</p>
+      <p><strong>Hinweise Formspree:</strong> <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">Datenschutzerklärung Formspree</a></p>
+    </div>
+
+    <h2>5. E-Mail-Kontakt</h2>
+    <p>Wenn du uns per E-Mail kontaktierst (<a href="mailto:marketing@macduke.com">marketing@macduke.com</a>), verarbeiten wir deine Angaben zur Bearbeitung der Anfrage (Art. 6 Abs. 1 lit. b DSGVO). Daten werden gelöscht, sobald sie für den Zweck nicht mehr erforderlich sind und keine Aufbewahrungspflichten entgegenstehen.</p>
+
+    <h2>6. Cookies, Tracking & externe Dienste</h2>
+    <p>Wir setzen aktuell <strong>keine</strong> Tracking-Cookies, Analyse-Tools (z. B. Google Analytics) oder Social-Plugins ein. Eingebettete Inhalte (z. B. Videos) werden – falls verwendet – so datensparsam wie möglich integriert.</p>
+
+    <h2>7. Deine Rechte</h2>
+    <ul>
+      <li><strong>Auskunft</strong> über deine bei uns gespeicherten Daten (Art. 15 DSGVO)</li>
+      <li><strong>Berichtigung</strong> unrichtiger Daten (Art. 16 DSGVO)</li>
+      <li><strong>Löschung</strong> („Recht auf Vergessenwerden“, Art. 17 DSGVO)</li>
+      <li><strong>Einschränkung</strong> der Verarbeitung (Art. 18 DSGVO)</li>
+      <li><strong>Datenübertragbarkeit</strong> (Art. 20 DSGVO)</li>
+      <li><strong>Widerspruch</strong> gegen bestimmte Verarbeitungen (Art. 21 DSGVO)</li>
+      <li><strong>Widerruf von Einwilligungen</strong> mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO)</li>
+    </ul>
+    <p>Schreibe uns dazu jederzeit an <a href="mailto:marketing@macduke.com">marketing@macduke.com</a>.</p>
+
+    <h2>8. Beschwerderecht</h2>
+    <p>Du hast das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren, z. B. bei der zuständigen Behörde am Sitz unseres Unternehmens in Berlin:</p>
+    <p>Berliner Beauftragte für Datenschutz und Informationsfreiheit (BlnBDI)<br>
+       Alt-Moabit 59–61, 10555 Berlin – <a href="https://www.datenschutz-berlin.de/" target="_blank" rel="noopener">datenschutz-berlin.de</a></p>
+
+    <h2>9. Sicherheit</h2>
+    <p>Wir treffen angemessene technische und organisatorische Maßnahmen, um deine Daten vor Verlust, Missbrauch oder unbefugtem Zugriff zu schützen (z. B. TLS-Verschlüsselung, Zugriffs- und Rechtekonzepte).</p>
+
+    <h2>10. Änderungen</h2>
+    <p>Wir können diese Datenschutzerklärung anpassen, wenn sich technische oder rechtliche Rahmenbedingungen ändern. Die jeweils aktuelle Fassung findest du auf dieser Seite.</p>
+
+    <p class="note">Hinweis: Diese Datenschutzerklärung ist auf eine datensparsame, statische Website mit Kontaktformular (Formspree) ausgelegt. Wenn später weitere Tools/Einbindungen hinzukommen, sollte die Erklärung entsprechend erweitert werden.</p>
+
+    <hr>
+
+    <p class="note">© <span id="year"></span> MacDuke Marketing – <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>© <span id="y"></span> MacDuke Marketing</div>
+    <div class="links">
+      <a href="https://www.instagram.com/macduke" target="_blank" rel="noopener">Instagram</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const now=new Date();
+  const fmt = now.toLocaleDateString('de-DE',{year:'numeric',month:'long',day:'2-digit'});
+  document.getElementById('ds-date').textContent = fmt;
+  document.getElementById('y').textContent = now.getFullYear();
+  document.getElementById('year').textContent = now.getFullYear();
+</script>
+
+</body>
+</html>

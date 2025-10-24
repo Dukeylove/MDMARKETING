@@ -11,8 +11,13 @@
       --blue:#2563eb; --text:#0a0a0a; --muted:#6b7280;
       --border:#e5e7eb; --bg:#fff; --radius:18px; --max:1200px;
       --acc-title:20px;
+      /* >>> Pfad zu deinem neuen Header-Bild (bei Bedarf anpassen) */
+      --hero-img:url('head.png');
+      --hero-height:min(92vh, 860px);
+      --hero-overlay: radial-gradient(120% 120% at 12% 18%, rgba(0,0,0,.55) 0%, rgba(0,0,0,.35) 38%, rgba(0,0,0,.2) 58%, rgba(0,0,0,.05) 78%, rgba(0,0,0,0) 100%);
     }
-    *{box-sizing:border-box} html,body{margin:0}
+    *{box-sizing:border-box}
+    html,body{margin:0; overflow-x:hidden;} /* verhindert horizontales Scrollen */
     body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%}
@@ -34,10 +39,16 @@
     html{scroll-behavior:smooth}
     section{scroll-margin-top:84px}
 
-    /* HERO full-width blue */
-    .hero{padding:72px 0 40px;border-top:0;background:var(--blue);color:#fff}
-    h1{font-size:clamp(30px,5vw,56px);line-height:1.1;margin:0 0 10px;font-weight:700}
-    .hero-sub{max-width:980px;color:#e6edff;margin:10px 0 0}
+    /* === HERO MIT BILD + PARALLAX === */
+    .hero{position:relative;padding:0;border-top:0;color:#fff;min-height:var(--hero-height);display:grid;place-items:center;overflow:clip}
+    .hero-media{position:absolute;inset:-8vh 0 -8vh 0;z-index:-1}
+    .hero-img{position:absolute;inset:-10vh 0 -10vh 0;background-image:var(--hero-img), linear-gradient(120deg,#dbeafe,#fce7f3);background-position:center;background-size:cover;transform:translateY(0) scale(1.06);will-change:transform}
+    .hero-media::after{content:"";position:absolute;inset:0;background:var(--hero-overlay);pointer-events:none}
+    .hero-content{position:relative;padding:22vh 0 16vh}
+    h1{font-size:clamp(30px,5vw,56px);line-height:1.1;margin:0 0 10px;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+    .hero-sub{max-width:980px;color:#e6edff;margin:10px 0 0;text-shadow:0 1px 10px rgba(0,0,0,.35)}
+    @media (max-width:900px){.hero-content{padding:18vh 0 12vh}}
+    @media (prefers-reduced-motion: reduce){.hero-img{transform:none !important}}
 
     /* Blue info */
     .blue{background:var(--blue);color:#fff;padding:36px 0}
@@ -67,11 +78,44 @@
     .service-icon{width:100px;height:100px;object-fit:contain;margin:0 auto 10px}
 
     /* Case Studies Slider */
-    .case-container{position:relative;overflow:visible}
-    .case-track{display:flex;gap:20px;width:max-content;will-change:transform}
+/* Case Studies Slider – sanfter Weiß-Fade links & rechts */
+.case-container{
+  position:relative;
+  overflow:hidden;
+  touch-action:pan-y;
+  background:#fff; /* sorgt für sauberes Fade */
+}
+
+.case-track{
+  display:flex;
+  gap:20px;
+  width:max-content;
+  will-change:transform;
+}
+
+/* sanfte Fades an den Rändern */
+.case-container::before,
+.case-container::after{
+  content:"";
+  position:absolute;
+  top:0;
+  width:10vw;         /* Breite des Fades (anpassbar) */
+  height:100%;
+  z-index:5;
+  pointer-events:none;
+}
+
+.case-container::before{
+  left:0;
+  background:linear-gradient(to right, #fff 0%, transparent 100%);
+}
+
+.case-container::after{
+  right:0;
+  background:linear-gradient(to left, #fff 0%, transparent 100%);
+}
     .case-item{position:relative;flex:0 0 auto;width:250px;height:500px;border-radius:20px;overflow:visible;cursor:pointer}
     .case-item img,.case-item video{width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;transition:transform .8s ease, box-shadow .8s ease}
-    /* Hover: schneller rein (0.15s), beim Verlassen langsam raus (0.8s Basis oben) */
     .case-item:hover img,.case-item:hover video{transform:scale(1.06);box-shadow:0 18px 60px rgba(0,0,0,.3);transition-duration:.15s}
     .case-overlay{position:absolute;inset:0;border-radius:20px;pointer-events:none;display:flex;align-items:flex-end;justify-content:center}
     .case-meta{width:100%;padding:14px 16px;color:#fff;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.35);opacity:0;transition:opacity .2s ease}
@@ -97,8 +141,22 @@
     .acc-panel ul{margin:8px 0 0 18px}
     .acc-sep{border:0;border-top:1px dashed var(--border);margin:0}
 
-    /* Branchen: schwarzer Abschnitt, weiße Panels mit schwarzem Text */
-    #branchen{background:#000;color:#f5f5f5}
+    /* Branchen: full-bleed mit sanftem Verlauf zu Weiß */
+    #branchen, #kontakt{
+      border-top:0 !important;     /* Kante oben entfernen */
+      background:#000 !important;  /* full-bleed Schwarz */
+    }
+    #branchen{
+      background: linear-gradient(
+        to bottom,
+        #000 0%,
+        #000 72%,
+        #0a0a0a 82%,
+        #111 88%,
+        #fff 100%
+      ) !important;
+      color:#f5f5f5;
+    }
     #branchen .acc{background:#fff}
     #branchen .acc-panel, 
     #branchen .acc-panel p, 
@@ -118,7 +176,7 @@
 <header>
   <div class="wrap">
     <nav>
-      <div class="brand"><div class="dot"></div><span>MacDuke Marketing</span></div>
+      <div class="brand"><img src="logo.png" alt="MacDuke Marketing Logo" style="height:32px;width:auto;"></div>
       <div class="menu">
         <a href="#top">Home</a>
         <a href="#leistungen">Leistungen</a>
@@ -135,9 +193,12 @@
 <main>
   <!-- HERO -->
   <section class="hero">
-    <div class="wrap">
-      <h1>Monatlicher Output, echte Resultate.<br>Kein Blabla, kein Agentursprech.</h1>
-      <p class="hero-sub">Wir denken Marken als System – aktuell, kulturell, konsistent.<br>Creative Direction, Social Video und Visual Identity – als monatliches System.</p>
+    <div class="hero-media" aria-hidden="true">
+      <div class="hero-img"></div>
+    </div>
+    <div class="wrap hero-content">
+      <h1>Brand Content, der wirkt.<br>Monat für Monat.</h1>
+      <p class="hero-sub">Wir liefern monatlich hochwertigen Marken-Content.<br>Planbar, systematisch, relevant.</p>
     </div>
   </section>
 
@@ -167,14 +228,12 @@
       </div>
       <div class="marquee" aria-label="Markenlogos, Endlosschleife">
         <div class="marquee-track">
-          <!-- Sequenz A -->
           <img class="logo-img" src="logo1.png" alt="Logo 1">
           <img class="logo-img" src="logo2.png" alt="Logo 2">
           <img class="logo-img" src="logo3.png" alt="Logo 3">
           <img class="logo-img" src="logo4.png" alt="Logo 4">
           <img class="logo-img" src="logo5.png" alt="Logo 5">
           <img class="logo-img" src="logo6.png" alt="Logo 6">
-          <!-- Duplikat für Loop -->
           <img class="logo-img" src="logo1.png" alt="Logo 1">
           <img class="logo-img" src="logo2.png" alt="Logo 2">
           <img class="logo-img" src="logo3.png" alt="Logo 3">
@@ -214,13 +273,13 @@
         <h3 style="margin-bottom:20px;">Case Studies</h3>
         <div class="case-container">
           <div class="case-track">
-            <!-- 7 Cases | Bilder+Videos -->
+
             <div class="case-item">
-              <img src="case1.jpg" alt="Case 1">
+              <video src="case_1.mov" autoplay loop muted playsinline></video>
               <div class="case-overlay">
                 <div class="case-meta">
-                  <div class="case-title">Projektname 1 — Kampagnenvisual</div>
-                  <div class="case-client">Kunde: Beispiel GmbH</div>
+                  <div class="case-title">ALDI Gute Beats für Alle</div>
+                  <div class="case-client">Kunde: ALDI</div>
                   <a class="case-ig" href="https://www.instagram.com/macduke" target="_blank" rel="noopener">instagram.com/macduke</a>
                 </div>
               </div>
@@ -230,30 +289,30 @@
               <video src="case2.mov" autoplay loop muted playsinline></video>
               <div class="case-overlay">
                 <div class="case-meta">
-                  <div class="case-title">Projektname 2 — Produkt Reel</div>
-                  <div class="case-client">Kunde: Brand XY</div>
+                  <div class="case-title">Marsmellow Content</div>
+                  <div class="case-client">Kunde: Marsmellow</div>
                   <a class="case-ig" href="https://www.instagram.com/macduke" target="_blank" rel="noopener">instagram.com/macduke</a>
                 </div>
               </div>
             </div>
 
             <div class="case-item">
-              <img src="case3.jpg" alt="Case 3">
+              <video src="case_3.mov" autoplay loop muted playsinline></video>
               <div class="case-overlay">
                 <div class="case-meta">
-                  <div class="case-title">Projektname 3 — Hospitality Mood</div>
-                  <div class="case-client">Kunde: Hotel Aurora</div>
+                  <div class="case-title">Marsmellow Universe Content</div>
+                  <div class="case-client">Kunde: Marsmellow</div>
                   <a class="case-ig" href="https://www.instagram.com/macduke" target="_blank" rel="noopener">instagram.com/macduke</a>
                 </div>
               </div>
             </div>
 
             <div class="case-item">
-              <img src="case4.jpg" alt="Case 4">
+              <video src="case_4.mov" autoplay loop muted playsinline></video>
               <div class="case-overlay">
                 <div class="case-meta">
-                  <div class="case-title">Projektname 4 — Identity Frames</div>
-                  <div class="case-client">Kunde: Studio North</div>
+                  <div class="case-title">Produkt Content</div>
+                  <div class="case-client">Kunde: UGG</div>
                   <a class="case-ig" href="https://www.instagram.com/macduke" target="_blank" rel="noopener">instagram.com/macduke</a>
                 </div>
               </div>
@@ -263,19 +322,19 @@
               <img src="case5.jpg" alt="Case 5">
               <div class="case-overlay">
                 <div class="case-meta">
-                  <div class="case-title">Projektname 5 — Tabletop Film</div>
-                  <div class="case-client">Kunde: Fine Spirits</div>
+                  <div class="case-title">Musikivideo "Babylonia"</div>
+                  <div class="case-client">Kunde: Marteria</div>
                   <a class="case-ig" href="https://www.instagram.com/macduke" target="_blank" rel="noopener">instagram.com/macduke</a>
                 </div>
               </div>
             </div>
 
             <div class="case-item">
-              <img src="case6.jpg" alt="Case 6">
+              <video src="case_6.mov" autoplay loop muted playsinline></video>
               <div class="case-overlay">
                 <div class="case-meta">
-                  <div class="case-title">Projektname 6 — Tech Explainer</div>
-                  <div class="case-client">Kunde: Nexa Tools</div>
+                  <div class="case-title">Big Rösti Wwerbesport</div>
+                  <div class="case-client">Kunde: McDonalds</div>
                   <a class="case-ig" href="https://www.instagram.com/macduke" target="_blank" rel="noopener">instagram.com/macduke</a>
                 </div>
               </div>
@@ -285,34 +344,79 @@
               <video src="case7.mov" autoplay loop muted playsinline></video>
               <div class="case-overlay">
                 <div class="case-meta">
-                  <div class="case-title">Projektname 7 — Launch Teaser</div>
-                  <div class="case-client">Kunde: Nova Brands</div>
+                  <div class="case-title">Marsmellow Trailer</div>
+                  <div class="case-client">Kunde: Marsmellow</div>
                   <a class="case-ig" href="https://www.instagram.com/macduke" target="_blank" rel="noopener">instagram.com/macduke</a>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Pfeile -->
+          </div>
           <button class="case-arrow left" aria-label="Zurück">‹</button>
           <button class="case-arrow right" aria-label="Weiter">›</button>
         </div>
       </div>
     </div>
   </section>
+  
+<!-- Prozess (kompakter & professioneller Look) -->
+<section id="prozess">
+  <div class="wrap">
+    <h2 style="font-size:32px;margin-bottom:22px;">Prozess</h2>
 
-  <!-- Branchen (ALLE 13, weißes Panel, schwarzer Text) -->
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;">
+      
+      <!-- 1 -->
+      <div style="background:#2563eb;color:#fff;border-radius:18px;padding:26px 24px 24px;transition:all .3s ease;">
+        <div style="font-size:30px;line-height:1;margin-bottom:6px;">🧠</div>
+        <h3 style="font-size:20px;margin:6px 0 10px;font-weight:700;line-height:1.3;">Gespräch &amp; Verständnis</h3>
+        <p style="font-size:15px;line-height:1.55;color:#e0e7ff;margin:0;">
+          Wir starten mit einem klaren Gespräch: <strong>Was willst du auf Instagram, TikTok oder LinkedIn erreichen?</strong><br><br>
+          Wir analysieren deinen aktuellen Auftritt und zeigen, <strong>wie dein Social Media professioneller wirken kann.</strong>
+        </p>
+      </div>
+
+      <!-- 2 -->
+      <div style="background:#2563eb;color:#fff;border-radius:18px;padding:26px 24px 24px;transition:all .3s ease;">
+        <div style="font-size:30px;line-height:1;margin-bottom:6px;">🎬</div>
+        <h3 style="font-size:20px;margin:6px 0 10px;font-weight:700;line-height:1.3;">Look-System</h3>
+        <p style="font-size:15px;line-height:1.55;color:#e0e7ff;margin:0;">
+          Wir entwickeln dein <strong>visuelles System</strong> – Farben, Licht, Typo, Bewegung.<br><br>
+          So sehen deine Reels, Stories und Posts <strong>einheitlich, hochwertig und wiedererkennbar</strong> aus.
+        </p>
+      </div>
+
+      <!-- 3 -->
+      <div style="background:#2563eb;color:#fff;border-radius:18px;padding:26px 24px 24px;transition:all .3s ease;">
+        <div style="font-size:30px;line-height:1;margin-bottom:6px;">🚀</div>
+        <h3 style="font-size:20px;margin:6px 0 10px;font-weight:700;line-height:1.3;">Monats-Sprints</h3>
+        <p style="font-size:15px;line-height:1.55;color:#e0e7ff;margin:0;">
+          Wir produzieren <strong>monatlich Content</strong>: Reels, Fotos, UGC-Clips, Stories – planbar und konstant.<br><br>
+          <strong>Kein Stress, kein Leerlauf.</strong> Du bekommst regelmäßig neue Inhalte, die Wirkung zeigen.
+        </p>
+      </div>
+
+      <!-- 4 -->
+      <div style="background:#2563eb;color:#fff;border-radius:18px;padding:26px 24px 24px;transition:all .3s ease;">
+        <div style="font-size:30px;line-height:1;margin-bottom:6px;">🔁</div>
+        <h3 style="font-size:20px;margin:6px 0 10px;font-weight:700;line-height:1.3;">Iteration</h3>
+        <p style="font-size:15px;line-height:1.55;color:#e0e7ff;margin:0;">
+          Wir prüfen <strong>Reichweite, Watchtime und Saves</strong> – und optimieren gezielt.<br><br>
+          Was funktioniert, skalieren wir. Der Rest wird verbessert. <strong>So wächst dein Auftritt messbar jeden Monat.</strong>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Branchen (full-bleed mit Verlauf) -->
   <section id="branchen">
     <div class="wrap">
       <h2 style="color:#f5f5f5">Branchen &amp; Spezialisierungen</h2>
-      <p style="color:#f5f5f5;max-width:900px;margin-top:6px">
-        Was das bedeutet: Wir denken Content <strong>branchen-spezifisch</strong>. 
-        Jede Branche hat eigene Codes, Tempi und Erwartungen – danach richten wir Ton, Licht, Bewegung und Format. 
-        Unten ein paar Beispiele inkl. monatlichem Output.
-      </p>
+      <p style="color:#f5f5f5;max-width:900px;margin-top:6px">Was das bedeutet: Wir denken Content <strong>branchen-spezifisch</strong>. Jede Branche hat eigene Codes, Tempi und Erwartungen – danach richten wir Ton, Licht, Bewegung und Format. Unten ein paar Beispiele inkl. monatlichem Output.</p>
 
       <div class="acc" style="margin-top:20px">
-        <!-- Cosmetics & Skincare -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Cosmetics &amp; Skincare</span><span>＋</span></button>
           <div class="acc-panel">
@@ -331,7 +435,6 @@
         </div>
         <hr class="acc-sep">
 
-        <!-- Spirits & Food Brands -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Spirits &amp; Food Brands</span><span>＋</span></button>
           <div class="acc-panel">
@@ -350,7 +453,6 @@
         </div>
         <hr class="acc-sep">
 
-        <!-- Tech & AI Tools -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Tech &amp; AI Tools</span><span>＋</span></button>
           <div class="acc-panel">
@@ -369,7 +471,6 @@
         </div>
         <hr class="acc-sep">
 
-        <!-- Hotels / Boutique Hospitality -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Hotels / Boutique Hospitality</span><span>＋</span></button>
           <div class="acc-panel">
@@ -388,7 +489,6 @@
         </div>
         <hr class="acc-sep">
 
-        <!-- Gastro & Lifestyle-Orte -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Gastro &amp; Lifestyle-Orte</span><span>＋</span></button>
           <div class="acc-panel">
@@ -407,7 +507,6 @@
         </div>
         <hr class="acc-sep">
 
-        <!-- Automotive & Mobility -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Automotive &amp; Mobility</span><span>＋</span></button>
           <div class="acc-panel">
@@ -426,7 +525,6 @@
         </div>
         <hr class="acc-sep">
 
-        <!-- Music & Culture Labels -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Music &amp; Culture Labels</span><span>＋</span></button>
           <div class="acc-panel">
@@ -445,7 +543,6 @@
         </div>
         <hr class="acc-sep">
 
-        <!-- Interior & Furniture Brands -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Interior &amp; Furniture Brands</span><span>＋</span></button>
           <div class="acc-panel">
@@ -464,7 +561,6 @@
         </div>
         <hr class="acc-sep">
 
-        <!-- Real Estate – Lifestyle -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Real Estate – Lifestyle</span><span>＋</span></button>
           <div class="acc-panel">
@@ -483,7 +579,6 @@
         </div>
         <hr class="acc-sep">
 
-        <!-- Luxury Food & Drinks -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Luxury Food &amp; Drinks</span><span>＋</span></button>
           <div class="acc-panel">
@@ -502,7 +597,6 @@
         </div>
         <hr class="acc-sep">
 
-        <!-- Beauty Studios / Hair -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Beauty Studios / Hair</span><span>＋</span></button>
           <div class="acc-panel">
@@ -521,7 +615,6 @@
         </div>
         <hr class="acc-sep">
 
-        <!-- Fashion Boutiques -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Fashion Boutiques</span><span>＋</span></button>
           <div class="acc-panel">
@@ -540,7 +633,6 @@
         </div>
         <hr class="acc-sep">
 
-        <!-- Cosmetics & Fashion Hybrids / Lifestyle Brands -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">Cosmetics &amp; Fashion Hybrids / Lifestyle Brands</span><span>＋</span></button>
           <div class="acc-panel">
@@ -559,7 +651,6 @@
         </div>
         <hr class="acc-sep">
 
-        <!-- People & Brand Identity -->
         <div class="acc-item">
           <button class="acc-btn"><span class="acc-title">People &amp; Brand Identity</span><span>＋</span></button>
           <div class="acc-panel">
@@ -581,30 +672,7 @@
     </div>
   </section>
 
-  <!-- Prozess -->
-  <section id="prozess">
-    <div class="wrap">
-      <h2>Prozess</h2>
-      <div class="grid grid-4" style="margin-top:24px">
-        <div class="card">
-          <h3>01 · Gespräch &amp; Verständnis</h3>
-          <p class="muted">Wir hören zu, fragen nach und verstehen dein Ziel. Kein Formularstress – ein kurzes, klares Gespräch, damit wir dasselbe Bild haben.</p>
-        </div>
-        <div class="card">
-          <h3>02 · Look-System</h3>
-          <p class="muted">Wir bauen ein visuelles System (Farbe, Licht, Typo, Motion), das zu dir passt – damit jedes Asset vertraut wirkt und wiedererkennbar bleibt.</p>
-        </div>
-        <div class="card">
-          <h3>03 · Monats-Sprints</h3>
-          <p class="muted">Planbar, ruhig im Ablauf: Konzept → Dreh/Foto → Schnitt → Release. Du siehst Ergebnisse im Takt statt Chaos im Postfach.</p>
-        </div>
-        <div class="card">
-          <h3>04 · Iteration</h3>
-          <p class="muted">Wir messen Wirkung und schärfen nach. Was performt, bleibt; was nicht, fliegt raus. Ohne Drama – mit Fokus auf Fortschritt.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+
 
   <!-- Pakete -->
   <section id="pakete">
@@ -628,9 +696,7 @@
             </ul>
           </div>
           <div class="card tabpanel" data-panel="m">
-            <h3 style="margin:0 0 8px;font-size:18px;display:flex;justify-content:space-between;align-items:center">
-              <span>M – Wachstum</span><span style="background:var(--blue);color:#fff;border-radius:999px;padding:.25rem .6rem;font-size:12px">Empfehlung</span>
-            </h3>
+            <h3 style="margin:0 0 8px;font-size:18px;display:flex;justify-content:space-between;align-items:center"><span>M – Wachstum</span><span style="background:var(--blue);color:#fff;border-radius:999px;padding:.25rem .6rem;font-size:12px">Empfehlung</span></h3>
             <p class="muted">Vollständige Creative Direction, 4 Reels + 1 Fotopaket, Hook-Varianten &amp; A/B-Testing, quartalsweises Look-Refresh.</p>
             <ul class="muted" style="margin:8px 0 0 18px">
               <li>Look-System + Motion-Guidelines</li>
@@ -655,28 +721,59 @@
     </div>
   </section>
 
-  <!-- Kontakt -->
-  <section id="kontakt" style="background:#0a0a0a;color:#fff">
-    <div class="wrap" style="display:grid;gap:28px;grid-template-columns:1fr 1fr">
-      <div>
-        <h2>Kontakt aufnehmen</h2>
-        <p class="muted" style="color:#cbd5e1">Für Marken, Unternehmen und Persönlichkeiten, die langfristig visuell wachsen wollen.</p>
-        <p><strong>E-Mail:</strong> <a style="color:#fff;text-decoration:underline" href="mailto:booking@macduke.studio">booking@macduke.studio</a></p>
-        <p><strong>Telefon:</strong> <a style="color:#fff;text-decoration:underline" href="tel:+4917600000000">+49 176 00000000</a></p>
-        <a class="btn" href="https://www.instagram.com/macduke" target="_blank" rel="noopener">Instagram</a>
-      </div>
-      <div class="card" style="background:#fff;color:#0a0a0a">
-        <h3>Kurzbriefing</h3>
-        <form class="grid" style="gap:10px">
-          <input class="input" style="padding:10px 12px;border:1px solid var(--border);border-radius:12px;width:100%" placeholder="Firma / Marke">
-          <input class="input" style="padding:10px 12px;border:1px solid var(--border);border-radius:12px;width:100%" placeholder="Website / Instagram (optional)">
-          <input class="input" style="padding:10px 12px;border:1px solid var(--border);border-radius:12px;width:100%" placeholder="Branche / Bereich">
-          <textarea class="input" rows="4" style="padding:10px 12px;border:1px solid var(--border);border-radius:12px;width:100%;resize:vertical" placeholder="Projektziel oder Fokus (2–3 Sätze)"></textarea>
-          <button type="button" class="btn" style="width:100%">Anfrage senden</button>
-        </form>
-      </div>
+  <!-- Kontakt (full-bleed schwarz) -->
+<section id="kontakt" style="background:#000;color:#fff">
+  <div class="wrap" style="display:grid;gap:28px;grid-template-columns:1fr 1fr">
+    <div>
+      <h2>Kontakt aufnehmen</h2>
+      <p class="muted" style="color:#cbd5e1">Für Marken, Unternehmen und Persönlichkeiten, die langfristig visuell wachsen wollen.</p>
+      <p><strong>E-Mail:</strong> <a style="color:#fff;text-decoration:underline" href="mailto:marketing@macduke.com">marketing@macduke.com</a></p>
+      <a class="btn" href="https://www.instagram.com/macduke" target="_blank" rel="noopener">Instagram</a>
     </div>
-  </section>
+
+    <div class="card" style="background:#fff;color:#0a0a0a">
+      <h3>Kurzbriefing</h3>
+
+      <!-- >>> Funktionsfähiges Formspree-Formular -->
+      <form action="https://formspree.io/f/mdkwqroy" method="POST" target="_top" class="grid" style="gap:10px">
+        <input type="text" name="_gotcha" autocomplete="off" tabindex="-1"
+               style="position:absolute;left:-10000px;opacity:0;height:0;width:0">
+
+        <input type="hidden" name="_subject" value="Neue Anfrage über marketing.macduke.de">
+
+        <input name="firma" required
+               style="padding:10px 12px;border:1px solid var(--border);border-radius:12px;width:100%"
+               placeholder="Firma / Marke *">
+
+        <input name="web"
+               style="padding:10px 12px;border:1px solid var(--border);border-radius:12px;width:100%"
+               placeholder="Website / Instagram (optional)">
+
+        <input name="branche" required
+               style="padding:10px 12px;border:1px solid var(--border);border-radius:12px;width:100%"
+               placeholder="Branche / Bereich *">
+
+        <textarea name="nachricht" rows="4" required
+                  style="padding:10px 12px;border:1px solid var(--border);border-radius:12px;width:100%;resize:vertical"
+                  placeholder="Projektziel oder Fokus (2–3 Sätze) *"></textarea>
+
+        <input type="email" name="email" required
+               style="padding:10px 12px;border:1px solid var(--border);border-radius:12px;width:100%"
+               placeholder="E-Mail für Rückmeldung *">
+
+        <label style="display:flex;gap:8px;align-items:flex-start;font-size:14px;color:#0a0a0a">
+          <input type="checkbox" required name="consent" style="margin-top:4px">
+          <span>Ich stimme zu, dass meine Angaben zur Kontaktaufnahme gespeichert und verarbeitet werden.</span>
+        </label>
+
+        <button type="submit" class="btn" style="width:100%">Anfrage senden</button>
+      </form>
+    </div>
+  </div>
+  <div style="grid-column:1 / -1;display:flex;justify-content:center;margin-top:40px;">
+  <img src="logo_2.png" alt="MacDuke Marketing Logo" style="height:48px;width:auto;opacity:0.9;">
+</div>
+</section>
 </main>
 
 <footer>
@@ -684,8 +781,8 @@
     <div>© <span id="y"></span> MacDuke Marketing</div>
     <div class="links">
       <a href="https://www.instagram.com/macduke" target="_blank" rel="noopener">Instagram</a>
-      <a href="#impressum">Impressum</a>
-      <a href="#datenschutz">Datenschutz</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
     </div>
   </div>
 </footer>
@@ -700,28 +797,16 @@
     if(!btn || !panel) return;
     btn.addEventListener('click',()=>{
       const isOpen=item.classList.contains('open');
-      if(isOpen){
-        item.classList.remove('open');
-        panel.style.maxHeight=null;
-      }else{
-        item.classList.add('open');
-        panel.style.maxHeight=panel.scrollHeight+'px';
-      }
+      if(isOpen){ item.classList.remove('open'); panel.style.maxHeight=null; }
+      else { item.classList.add('open'); panel.style.maxHeight=panel.scrollHeight+'px'; }
     });
-    window.addEventListener('resize',()=>{
-      if(item.classList.contains('open')){
-        panel.style.maxHeight=panel.scrollHeight+'px';
-      }
-    });
+    window.addEventListener('resize',()=>{ if(item.classList.contains('open')){ panel.style.maxHeight=panel.scrollHeight+'px'; } });
   });
 
   // Tabs (Pakete)
   const tabs=document.querySelectorAll('.tab');
   const panels=document.querySelectorAll('.tabpanel');
-  function showTab(val){
-    tabs.forEach(t=>t.setAttribute('aria-selected', t.dataset.tab===val ? 'true' : 'false'));
-    panels.forEach(p=>p.hidden = p.dataset.panel!==val);
-  }
+  function showTab(val){ tabs.forEach(t=>t.setAttribute('aria-selected', t.dataset.tab===val ? 'true' : 'false')); panels.forEach(p=>p.hidden = p.dataset.panel!==val); }
   tabs.forEach(t=>t.addEventListener('click',()=>showTab(t.dataset.tab)));
   showTab('m');
 
@@ -730,7 +815,6 @@
     const container=document.querySelector('.case-container');
     const track=document.querySelector('.case-track');
     if(!container||!track) return;
-    // Dupliziere Items für nahtlosen Loop
     const items=[...track.children];
     track.innerHTML='';
     const all=[...items, ...items];
@@ -740,7 +824,9 @@
     const half=()=>track.scrollWidth/2;
     function step(){
       if(!paused){
-        x-=speed; const w=half(); if(Math.abs(x)>=w){ x=0; }
+        x-=speed;
+        const w=half();
+        if(Math.abs(x)>=w){ x=0; }
         track.style.transform=`translateX(${x}px)`;
       }
       requestAnimationFrame(step);
@@ -752,9 +838,30 @@
 
     const left=container.querySelector('.case-arrow.left');
     const right=container.querySelector('.case-arrow.right');
-    function jump(delta){ paused=true; x+=delta; track.style.transform=`translateX(${x}px)`; setTimeout(()=>paused=false,400); }
+    function jump(delta){
+      paused=true;
+      x+=delta;
+      track.style.transform=`translateX(${x}px)`;
+      setTimeout(()=>paused=false,400);
+    }
     left && left.addEventListener('click',()=>jump(300));
     right && right.addEventListener('click',()=>jump(-300));
+  })();
+
+  // Parallax für Header-Bild
+  (function(){
+    const img = document.querySelector('.hero-img');
+    if(!img) return;
+    let ticking=false;
+    const maxShift = 80; // px
+    function update(){
+      const y = window.scrollY || document.documentElement.scrollTop || 0;
+      const shift = Math.max(0, Math.min(maxShift, y * 0.25));
+      img.style.transform = `translateY(${shift}px) scale(1.06)`;
+      ticking=false;
+    }
+    window.addEventListener('scroll', ()=>{ if(!ticking){ ticking=true; requestAnimationFrame(update); } }, {passive:true});
+    update();
   })();
 </script>
 
